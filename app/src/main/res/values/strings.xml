@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Checkin_guest</string>
+    <string name="main_ment1">어디로 떠나야 할 지 모르겠다면?</string>
+    <string name="main_ment2">인기많은 숙소는?</string>
 </resources>
