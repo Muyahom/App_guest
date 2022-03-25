@@ -4,6 +4,7 @@
     <dimen name="height_appbar">180dp</dimen>
     <dimen name="height_CollapsingToolbarLayout">120dp</dimen>
     <dimen name="height_searchbar">60dp</dimen>
+    <dimen name="height_applayout_toolbar">35dp</dimen>
     <dimen name="height_viewpager_banner">220dp</dimen>
-    <dimen name="height_recyclerview_rc">300dp</dimen>
+    <dimen name="height_recyclerview_rc">250dp</dimen>
 </resources>

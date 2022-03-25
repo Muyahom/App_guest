@@ -2,4 +2,5 @@
     <string name="app_name">Checkin_guest</string>
     <string name="main_ment1">어디로 떠나야 할 지 모르겠다면?</string>
     <string name="main_ment2">인기많은 숙소는?</string>
+    <string name="search_ment1">숙소 또는 여행지를 입력해주세요</string>
 </resources>

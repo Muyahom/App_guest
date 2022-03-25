@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Checkin_guest">
         <activity
+            android:name=".view.activity.SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
