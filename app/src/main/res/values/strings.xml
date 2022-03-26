@@ -3,4 +3,12 @@
     <string name="main_ment1">어디로 떠나야 할 지 모르겠다면?</string>
     <string name="main_ment2">인기많은 숙소는?</string>
     <string name="search_ment1">숙소 또는 여행지를 입력해주세요</string>
+    <string name="search_ment2">날짜를 선택하세요</string>
+    <string name="search_year">년</string>
+    <string name="search_month">월</string>
+    <string name="search_date">일</string>
+    <string name="search_period">~</string>
+    <string name="search_ment3">숙소 유형</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
