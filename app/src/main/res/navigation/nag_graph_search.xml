@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nag_graph_search"
+    app:startDestination="@id/frag_searchWindow1">
+
+    <fragment
+        android:id="@+id/frag_searchWindow1"
+        android:name="com.example.myapplication.checkin_guest.view.fragment.Frag_searchWindow1"
+        android:label="Frag_searchWindow1" >
+        <action
+            android:id="@+id/action_frag_searchWindow1_to_frag_searchWindow2"
+            app:destination="@id/frag_searchWindow2" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_searchWindow2"
+        android:name="com.example.myapplication.checkin_guest.view.fragment.Frag_searchWindow2"
+        android:label="Frag_searchWindow2" >
+        <action
+            android:id="@+id/action_frag_searchWindow2_to_frag_searchWindow1"
+            app:destination="@id/frag_searchWindow1" />
+        <action
+            android:id="@+id/action_frag_searchWindow2_to_frag_searchWindow3"
+            app:destination="@id/frag_searchWindow3" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_searchWindow3"
+        android:name="com.example.myapplication.checkin_guest.view.fragment.Frag_searchWindow3"
+        android:label="Frag_searchWindow3" >
+        <action
+            android:id="@+id/action_frag_searchWindow3_to_frag_searchWindow2"
+            app:destination="@id/frag_searchWindow2" />
+    </fragment>
+</navigation>

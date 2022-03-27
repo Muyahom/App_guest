@@ -43,7 +43,7 @@ public class SearchActivity extends AppCompatActivity {
             case 1:
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.setCustomAnimations(R.anim.anim_slide_in_right, R.anim.anim_slide_out_right);
+                fragmentTransaction.setCustomAnimations(R.anim.anim_slide_in_left, R.anim.anim_slide_out_left);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.replace(R.id.fragcontainer, frag_searchWindow2).commit();
 

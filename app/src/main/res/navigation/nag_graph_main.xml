@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nag_graph">
+
+    <fragment
+        android:id="@+id/frag_search"
+        android:name="com.example.myapplication.checkin_guest.view.fragment.Frag_search"
+        android:label="Frag_search" >
+        <action
+            android:id="@+id/action_frag_search_to_searchActivity"
+            app:destination="@id/searchActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/searchActivity"
+        android:name="com.example.myapplication.checkin_guest.view.activity.SearchActivity"
+        android:label="SearchActivity" />
+</navigation>

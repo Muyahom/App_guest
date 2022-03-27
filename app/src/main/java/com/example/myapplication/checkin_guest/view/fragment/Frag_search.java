@@ -84,6 +84,8 @@ public class Frag_search extends Fragment {
             }
         });
 
+
+
         init();
         insertTemp();
         insertTemp_rc();

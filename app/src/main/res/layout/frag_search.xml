@@ -41,7 +41,9 @@
                     android:id="@+id/btn_search"
                     android:layout_width="350dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/bar_search"/>
+                    android:background="@drawable/search_bar_setting"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"/>
             </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
