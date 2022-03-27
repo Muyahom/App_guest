@@ -33,6 +33,7 @@ public class Frag_searchWindow2 extends Fragment {
 //        LayoutInflater localInflater = inflater.cloneInContext(contextThemeWrapper);
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.dateRangePicker();
+        builder.setTitleText("얼마나 머무르세요?");
         MaterialDatePicker picker = builder.build();
         picker.show(getActivity().getSupportFragmentManager(), picker.toString());
         return fragSearchWindow2Binding.getRoot();
