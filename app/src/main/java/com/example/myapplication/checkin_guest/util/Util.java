@@ -3,7 +3,12 @@ package com.example.myapplication.checkin_guest.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.util.Log;
+import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.core.view.WindowInsetsControllerCompat;
 
 public class Util {
 
@@ -32,5 +37,23 @@ public class Util {
         }
         if (!isUseBottomNavigation(context)) bottomNavigation = 0;
         return bottomNavigation;
+    }
+    // 상태바 글자 색상 변경
+    public static void setStatusBarColor(Activity activity, int mode) {
+        Window window = activity.getWindow();
+        WindowInsetsControllerCompat windowInsetsControllerCompat = new WindowInsetsControllerCompat(window, window.getDecorView());
+        if (mode == 1) {
+            // 상태바 글자 색상 white
+            windowInsetsControllerCompat.setAppearanceLightStatusBars(false);
+        }else if (mode == 2){
+            // 상태바 글자 색상 black
+            windowInsetsControllerCompat.setAppearanceLightStatusBars(true);
+        }
+    }
+    // 상태바 색상 변경
+    public static void setStatusBarColor(Activity activity){
+        //흰색으로 바꾸기
+        Window window = activity.getWindow();
+        window.setStatusBarColor(Color.WHITE);
     }
 }

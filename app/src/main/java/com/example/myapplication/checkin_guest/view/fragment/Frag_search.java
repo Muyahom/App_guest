@@ -29,6 +29,7 @@ import com.example.myapplication.checkin_guest.databinding.FragSearchBinding;
 import com.example.myapplication.checkin_guest.model.PopularItem;
 import com.example.myapplication.checkin_guest.model.RecommendationItem;
 import com.example.myapplication.checkin_guest.model.ViewPageDataBanner;
+import com.example.myapplication.checkin_guest.util.Util;
 import com.example.myapplication.checkin_guest.view.activity.SearchActivity;
 
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 public class Frag_search extends Fragment {
     private final String TAG = "Frag_search";
     private FragSearchBinding fragSearchBinding = null;
+    private Util util;
 
     //배너 광고 관련 변수
     private ViewPagerAdapterBanner viewPagerAdapterBanner;
@@ -68,12 +70,13 @@ public class Frag_search extends Fragment {
                 //위로 거의 다 스크롤 하면 appbar 영역을 white로 설정 및 상태바 글자 색 black
                 Log.d(TAG, "Math.abs(verticalOffset) >= getYMax() / 2");
                 fragSearchBinding.appbar.setBackgroundResource(R.color.white);
-                setStatusBarColor(getActivity(), 2);
+                util.setStatusBarColor(getActivity(), 2);
+
             } else {
                 //내린다면 다시 기존 배경색으로 설정 및 상태바 글자 색 white
                 Log.d(TAG, "else");
                 fragSearchBinding.appbar.setBackgroundResource(R.drawable.gradient_main_logo);
-                setStatusBarColor(getActivity(), 1);
+                util.setStatusBarColor(getActivity(), 1);
             }
         });
 
@@ -84,8 +87,6 @@ public class Frag_search extends Fragment {
             }
         });
 
-
-
         init();
         insertTemp();
         insertTemp_rc();
@@ -94,6 +95,7 @@ public class Frag_search extends Fragment {
     }
 
     private void init(){
+        util = new Util();
         viewPagerAdapterBanner = new ViewPagerAdapterBanner();
         recyclerViewAdapter_recommendation = new RecyclerViewAdapter_Recommendation();
         recyclerViewAdapter_popular = new RecyclerViewAdapter_Popular();

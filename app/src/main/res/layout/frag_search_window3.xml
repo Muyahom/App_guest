@@ -12,7 +12,6 @@
             android:id="@+id/constraint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/height_applayout_toolbar"
             android:background="@drawable/radius_search">
 
             <TextView
@@ -286,6 +285,7 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <Button
+                android:id="@+id/btn_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"

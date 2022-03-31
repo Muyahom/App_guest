@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Checkin_guest">
         <activity
+            android:name=".view.activity.SearchResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.SearchActivity"
             android:exported="false" />
         <activity
@@ -22,6 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="egtv4m8rr9"/>
     </application>
 
 </manifest>

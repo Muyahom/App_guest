@@ -20,6 +20,7 @@ public class RecyclerViewAdapter_Recommendation extends RecyclerView.Adapter<Rec
 
     public void setListData(ArrayList<RecommendationItem> listData) {
         this.listData = listData;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

@@ -18,6 +18,7 @@ public class RecyclerViewAdapter_Popular extends RecyclerView.Adapter<RecyclerVi
 
     public void setListData(ArrayList<PopularItem> listData) {
         this.listData = listData;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
