@@ -39,8 +39,8 @@ public class SearchResultActivity extends AppCompatActivity {
         //statusbar 설정 코드
         util.setStatusBarColor(this);
         util.setStatusBarColor(this, 2);
-
-
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+        bottomSheetBehavior.setFitToContents(false);
         insert();
     }
     public void init(){
