@@ -13,8 +13,8 @@ dependencyResolutionManagement {
         maven {url 'https://jitpack.io'}
         maven {url 'https://naver.jfrog.io/artifactory/maven/'}
         mavenCentral()
-
     }
 }
 rootProject.name = "Checkin_guest"
 include ':app'
+

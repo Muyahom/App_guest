@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "215480588581",
+    "firebase_url": "https://moyahome-23245-default-rtdb.firebaseio.com",
+    "project_id": "moyahome-23245",
+    "storage_bucket": "moyahome-23245.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215480588581:android:500649c875d9a1337962cc",
+        "android_client_info": {
+          "package_name": "com.example.myapplication.checkin_guest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215480588581-3j640oub63gu8mi790aj4jo6kqkfjaec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplication.checkin_guest",
+            "certificate_hash": "c8dc673fc6af246e73fff26fb5d97cc542fa28c0"
+          }
+        },
+        {
+          "client_id": "215480588581-6iksh6i23152focl2nhbit91598smv2p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzO-RWU4UUto0fn5UQQURxRfipofn4nWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215480588581-6iksh6i23152focl2nhbit91598smv2p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
