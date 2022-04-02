@@ -1,4 +1,4 @@
-package com.example.myapplication.checkin_guest.view.fragment;
+package com.example.myapplication.checkin_guest.view.fragment.searchWindow;
 
 import android.content.Intent;
 import android.os.Bundle;

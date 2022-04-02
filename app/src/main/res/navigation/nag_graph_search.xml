@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/frag_searchWindow1"
-        android:name="com.example.myapplication.checkin_guest.view.fragment.Frag_searchWindow1"
+        android:name="com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow1"
         android:label="Frag_searchWindow1" >
         <action
             android:id="@+id/action_frag_searchWindow1_to_frag_searchWindow2"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/frag_searchWindow2"
-        android:name="com.example.myapplication.checkin_guest.view.fragment.Frag_searchWindow2"
+        android:name="com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow2"
         android:label="Frag_searchWindow2" >
         <action
             android:id="@+id/action_frag_searchWindow2_to_frag_searchWindow1"
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/frag_searchWindow3"
-        android:name="com.example.myapplication.checkin_guest.view.fragment.Frag_searchWindow3"
+        android:name="com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow3"
         android:label="Frag_searchWindow3" >
         <action
             android:id="@+id/action_frag_searchWindow3_to_frag_searchWindow2"

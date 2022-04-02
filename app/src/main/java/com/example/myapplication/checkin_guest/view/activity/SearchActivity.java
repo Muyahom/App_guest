@@ -13,9 +13,9 @@ import android.os.Bundle;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.ActivitySearchBinding;
 import com.example.myapplication.checkin_guest.util.Util;
-import com.example.myapplication.checkin_guest.view.fragment.Frag_searchWindow1;
-import com.example.myapplication.checkin_guest.view.fragment.Frag_searchWindow2;
-import com.example.myapplication.checkin_guest.view.fragment.Frag_searchWindow3;
+import com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow1;
+import com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow2;
+import com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow3;
 
 public class SearchActivity extends AppCompatActivity {
     private final String TAG = "SearchActivity";

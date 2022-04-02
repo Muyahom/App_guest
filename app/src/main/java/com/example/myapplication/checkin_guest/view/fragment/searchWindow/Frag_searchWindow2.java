@@ -1,4 +1,4 @@
-package com.example.myapplication.checkin_guest.view.fragment;
+package com.example.myapplication.checkin_guest.view.fragment.searchWindow;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

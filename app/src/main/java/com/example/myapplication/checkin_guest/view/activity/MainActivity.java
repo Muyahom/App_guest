@@ -4,19 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.ActivityMainBinding;
 import com.example.myapplication.checkin_guest.util.Util;
-import com.example.myapplication.checkin_guest.view.fragment.Frag_search;
+import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_search;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";

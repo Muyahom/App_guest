@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/frag_search"
-        android:name="com.example.myapplication.checkin_guest.view.fragment.Frag_search"
+        android:name="com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_search"
         android:label="Frag_search" >
         <action
             android:id="@+id/action_frag_search_to_searchActivity"

@@ -1,4 +1,4 @@
-package com.example.myapplication.checkin_guest.view.fragment;
+package com.example.myapplication.checkin_guest.view.fragment.mainWindow;
 
 import android.app.Activity;
 import android.content.Intent;
