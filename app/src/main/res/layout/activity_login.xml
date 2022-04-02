@@ -51,6 +51,7 @@
                     android:background="@drawable/radius_login"
                     android:fontFamily="@font/notosans"
                     android:hint="아이디(이메일)"
+                    android:inputType="textEmailAddress"
                     android:paddingHorizontal="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -104,10 +105,12 @@
                 app:layout_constraintVertical_bias="0.084" />
 
             <TextView
+                android:id="@+id/btn_signUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosans_bold"
                 android:text="회원가입"
+                android:background="?attr/selectableItemBackground"
                 android:textColor="#ccc"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

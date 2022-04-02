@@ -1,17 +1,9 @@
 package com.example.myapplication.checkin_guest.viewModel.Executor;
 
-import android.app.Activity;
-
-import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.myapplication.checkin_guest.databinding.ActivityLoginBinding;
-import com.example.myapplication.checkin_guest.view.activity.LoginActivity;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.orhanobut.logger.Logger;

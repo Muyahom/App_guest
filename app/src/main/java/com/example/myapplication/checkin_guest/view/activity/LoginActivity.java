@@ -37,11 +37,13 @@ public class LoginActivity extends AppCompatActivity {
         Util.transparency_statusBar(this);
         activityLoginBinding.constraint.setPadding(0, 0, 0, Util.getBottomNavigationHeight(getApplicationContext()));
 
+        // view model 사용을 위한 초기화 작업
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
         mLoginViewModel.setParentContext(this);
 
         init();
 
+        //이메일 로그인 버튼 클릭 시
         activityLoginBinding.btnSignInEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,11 +56,22 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //구글 로그인 버튼 클릭 시
         activityLoginBinding.signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Logger.d(TAG, "Google Login Request");
                 mLoginViewModel.onRequestSignInWithGoogle();
+            }
+        });
+
+        //회원가입 버튼 클릭시
+        activityLoginBinding.btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Logger.d(TAG, "sign up");
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -92,7 +105,6 @@ public class LoginActivity extends AppCompatActivity {
             mLoginViewModel.onRequestSignInWithEmail(email, password);
         }
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
