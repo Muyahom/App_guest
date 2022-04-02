@@ -12,7 +12,13 @@
         android:theme="@style/Theme.Checkin_guest">
         <activity
             android:name=".view.activity.LoginActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".view.activity.SearchResultActivity"
             android:exported="false" />
@@ -22,11 +28,7 @@
         <activity
             android:name=".view.activity.MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data

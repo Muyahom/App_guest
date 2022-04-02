@@ -2,6 +2,11 @@ package com.example.myapplication.checkin_guest.model;
 
 import java.util.ArrayList;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class User {
     private String email;
     private ArrayList<String> favorites;
