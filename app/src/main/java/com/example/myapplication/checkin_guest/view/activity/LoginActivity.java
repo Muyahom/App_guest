@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         // 처리할 UI 관련 소스코드, 상태바 투명 및 바텀내비게이션 높이에 따른 레이아웃 페딩 설정
         Util.transparency_statusBar(this);
         activityLoginBinding.constraint.setPadding(0, 0, 0, Util.getBottomNavigationHeight(getApplicationContext()));
+        activityLoginBinding.linearProgress.setVisibility(View.INVISIBLE);
 
         // view model 사용을 위한 초기화 작업
         mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
@@ -48,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Logger.d(TAG, "Email Login Request");
+                activityLoginBinding.linearProgress.setVisibility(View.VISIBLE);
                 // email과 password를 받아올때 앞뒤 공백을 제거하고 변수에 값을 삽입한다.
                 String email = activityLoginBinding.edtId.getText().toString().trim();
                 String password = activityLoginBinding.edtPassword.getText().toString().trim();

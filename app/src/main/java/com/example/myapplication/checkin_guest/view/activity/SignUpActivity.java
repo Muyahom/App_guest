@@ -57,7 +57,7 @@ public class SignUpActivity extends AppCompatActivity {
         fragEmailCertification = new FragEmailCertification();
         fragPhoneNumberCertification = new FragPhoneNumberCertification();
         btn_next = activitySignUpBinding.btnNext;
-        activitySignUpBinding.progressBar.setVisibility(View.INVISIBLE);
+        activitySignUpBinding.linearProgress.setVisibility(View.INVISIBLE);
     }
 
     public Button getBtn_next() {
@@ -107,12 +107,12 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void signUp() {
-        activitySignUpBinding.progressBar.setVisibility(View.VISIBLE);
+        activitySignUpBinding.linearProgress.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(this.email, this.pwd)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         try {
-                            activitySignUpBinding.progressBar.setVisibility(View.INVISIBLE);
+                            activitySignUpBinding.linearProgress.setVisibility(View.INVISIBLE);
                             task.getResult(ApiException.class);
                             user = mAuth.getCurrentUser();
                             Log.d(TAG, user.getUid());
@@ -124,7 +124,7 @@ public class SignUpActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        activitySignUpBinding.progressBar.setVisibility(View.INVISIBLE);
+                        activitySignUpBinding.linearProgress.setVisibility(View.INVISIBLE);
                         Log.d(TAG, String.valueOf(task.getException()));
                         Toast.makeText(this, "이미 등록된 이메일 입니다.", Toast.LENGTH_SHORT).show();
                     }

@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
+import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.callback.ActionListener;
 import com.example.myapplication.checkin_guest.callback.ErrorListener;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,8 +30,12 @@ public class LoginView {
         this.mActionListener = actionListener;
     }
 
-    public void setmErrorListener(ErrorListener errorListener){
+    public void setmErrorListener(ErrorListener errorListener) {
         this.mErrorListener = errorListener;
+    }
+
+    public void setProgressInVisible() {
+        mView.findViewById(R.id.linear_progress).setVisibility(View.INVISIBLE);
     }
 
     /*
@@ -59,26 +64,28 @@ public class LoginView {
                           이메일 로그인 메서드 모음
                                                                  */
 
-    public void setEmailLiveData(LiveData<FirebaseUser> liveData){
-        liveData.observe(mLifecycleOwner, data->{
-            if(liveData.getValue() == null){
+    public void setEmailLiveData(LiveData<FirebaseUser> liveData) {
+        liveData.observe(mLifecycleOwner, data -> {
+            if (liveData.getValue() == null) {
                 //로그인 실패시
                 Logger.d(TAG, "Email login failed");
+                setProgressInVisible();
                 return;
             }
             //로그인 성공시 notify
             Logger.d(TAG, "Google Login success");
             mActionListener.NotifySignInEmailSuccess();
+            setProgressInVisible();
         });
     }
 
     public void setThrowableEmailLiveData(LiveData<Throwable> liveData) {
         liveData.observe(mLifecycleOwner, data -> {
             Logger.d(TAG, data.getMessage());
-            if(liveData.getValue() instanceof NullPointerException){
+            if (liveData.getValue() instanceof NullPointerException) {
+                setProgressInVisible();
                 mErrorListener.NotifySignInEmailError();
             }
-
         });
     }
 }
