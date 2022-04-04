@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.myapplication.checkin_guest.callback.ActionListener;
 import com.example.myapplication.checkin_guest.callback.ErrorListener;
+import com.example.myapplication.checkin_guest.view.activity.LoginActivity;
 import com.example.myapplication.checkin_guest.view.view.LoginView;
 import com.example.myapplication.checkin_guest.view.activity.MainActivity;
 import com.example.myapplication.checkin_guest.viewModel.Executor.EmailLoginExcutor;
@@ -18,8 +19,8 @@ import com.orhanobut.logger.Logger;
 import java.lang.ref.WeakReference;
 
 public class LoginViewModel extends ViewModel {
+    private final String TAG = LoginViewModel.class.getSimpleName();
     private WeakReference<Activity> mActivityRef;
-
 
     //firebase 로그인 처리를 위한 변수
     // LiveData
@@ -73,7 +74,6 @@ public class LoginViewModel extends ViewModel {
         }
     }
 
-
     /*                       
                           구글 로그인 메서드 모음
                                                                  */
@@ -107,6 +107,7 @@ public class LoginViewModel extends ViewModel {
     //구글 ui로 부터 로그인을 진행할 이메일을 가져옴
     public boolean onActivityResult(Intent data){
         mGoogleLoginExecutor.firebaseAuthWithGoogle(data, mActivityRef.get());
+        Logger.d(TAG, "onActivityResult()" + data.toString());
         return true;
     }
 

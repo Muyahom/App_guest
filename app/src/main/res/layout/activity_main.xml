@@ -27,13 +27,13 @@
 
             </androidx.fragment.app.FragmentContainerView>
 
+
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationView"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:itemBackground="@android:color/white"
                 app:itemIconSize="@dimen/bottom_nav_icon"
-                app:itemTextColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

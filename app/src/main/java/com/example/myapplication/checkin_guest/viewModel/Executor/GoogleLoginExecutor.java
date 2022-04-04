@@ -59,11 +59,12 @@ public class GoogleLoginExecutor{
     }
 
     public void firebaseAuthWithGoogle(Intent data, Activity activity){
-        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+        Task<GoogleSignInAccount> task;
         GoogleSignInAccount account;
         try{
+             task = GoogleSignIn.getSignedInAccountFromIntent(data);
             account = task.getResult(ApiException.class);
-        }catch(ApiException e){
+        } catch(Exception e){
             e.printStackTrace();
             mThrowableLiveData.setValue(e);
             return;

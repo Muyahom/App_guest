@@ -1,7 +1,6 @@
 package com.example.myapplication.checkin_guest.view.view;
 
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
@@ -11,7 +10,6 @@ import com.example.myapplication.checkin_guest.callback.ActionListener;
 import com.example.myapplication.checkin_guest.callback.ErrorListener;
 import com.google.firebase.auth.FirebaseUser;
 import com.orhanobut.logger.Logger;
-
 
 public class LoginView {
 
@@ -46,10 +44,12 @@ public class LoginView {
             if (liveData.getValue() == null) {
                 //로그인 실패시
                 Logger.d(TAG, "Google Login failed");
+                setProgressInVisible();
                 return;
             }
             //로그인 성공시(activity에 notify)
             Logger.d(TAG, "Google Login success");
+            setProgressInVisible();
             mActionListener.NotifySignInGoogleSuccess();
         });
     }
@@ -57,6 +57,7 @@ public class LoginView {
     public void setThrowableUserLiveData(LiveData<Throwable> liveData) {
         liveData.observe(mLifecycleOwner, data -> {
             Logger.d(TAG, data.getMessage());
+            setProgressInVisible();
         });
     }
 
