@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragSearchWindow3Binding;
 import com.example.myapplication.checkin_guest.view.activity.SearchResultActivity;
+import com.example.myapplication.checkin_guest.view.activity.SelectActivity;
 
 
 public class Frag_searchWindow3 extends Fragment {

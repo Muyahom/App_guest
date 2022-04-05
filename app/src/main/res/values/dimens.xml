@@ -7,5 +7,6 @@
     <dimen name="height_applayout_toolbar">35dp</dimen>
     <dimen name="height_viewpager_banner">220dp</dimen>
     <dimen name="height_recyclerview_rc">250dp</dimen>
+    <dimen name="height_viewpager_selectimg">350dp</dimen>
     <dimen name="margin_search_text">10dp</dimen>
 </resources>
