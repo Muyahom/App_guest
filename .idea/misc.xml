@@ -43,12 +43,17 @@
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17094017094017094" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/menu/search_menu.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/font/notosans_m.xml" value="0.1398148148148148" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_search_result.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/activity_select.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.13541666666666666" />
+        <entry key="app/src/main/res/layout/actvity_reservation.xml" value="0.1" />
         <entry key="app/src/main/res/layout/frag_email_certification.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/frag_get_email.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/frag_phone_number_certification.xml" value="0.13541666666666666" />
+        <entry key="app/src/main/res/layout/frag_reservation.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/frag_search_window2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/frag_search_window3.xml" value="0.10572916666666667" />
         <entry key="app/src/main/res/layout/frag_select.xml" value="0.13541666666666666" />
         <entry key="app/src/main/res/layout/item_recyclerview_sr.xml" value="0.10572916666666667" />
