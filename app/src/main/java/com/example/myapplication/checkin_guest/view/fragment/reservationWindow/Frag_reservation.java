@@ -1,6 +1,7 @@
 package com.example.myapplication.checkin_guest.view.fragment.reservationWindow;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragReservationBinding;
+import com.example.myapplication.checkin_guest.view.activity.PayActivity;
+import com.example.myapplication.checkin_guest.view.activity.ReservationActivity;
 import com.example.myapplication.checkin_guest.view.activity.SearchActivity;
 import com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow2;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -162,6 +165,15 @@ public class Frag_reservation extends Fragment {
                     FR_Binding.pat.setText(0+"");
                     count3=0;
                 }
+            }
+        });
+
+        FR_Binding.pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PayActivity.class);
+                startActivity(intent);
+
             }
         });
 

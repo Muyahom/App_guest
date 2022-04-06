@@ -37,6 +37,9 @@
         <activity
             android:name=".view.activity.ReservationActivity"
             android:exported="false" />
+        <activity
+            android:name=".view.activity.PayActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
