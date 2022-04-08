@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.adapter.ViewPagerAdapterSelect;
@@ -20,11 +21,13 @@ import com.example.myapplication.checkin_guest.model.ViewPageDataSelect;
 import com.example.myapplication.checkin_guest.view.activity.ReservationActivity;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Frag_select extends Fragment {
 
     private FragSelectBinding fragSelectBinding = null;
     private ViewPagerAdapterSelect viewPagerAdapterSelect;
+
 
 
     @Override
@@ -45,6 +48,8 @@ public class Frag_select extends Fragment {
                 intent_select();
             }
         });
+
+
 
         init();
         insertTemp();
@@ -73,7 +78,8 @@ public class Frag_select extends Fragment {
         list.add(viewPageDataBanner2);
         viewPagerAdapterSelect.setListData(list);
         fragSelectBinding.viewPagerSelectFrag.setAdapter(viewPagerAdapterSelect);
-
+        //뷰페이저에 인디케이터추가
+        fragSelectBinding.dotsIndicator.setViewPager2(fragSelectBinding.viewPagerSelectFrag);
 
     }
     //예약 페이지 이동함수

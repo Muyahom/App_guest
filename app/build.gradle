@@ -67,5 +67,9 @@ dependencies {
     //mail 전송
     implementation 'com.sun.mail:android-mail:1.5.5'
     implementation 'com.sun.mail:android-activation:1.5.5'
+    // 뷰페이저 인디케이터
+    implementation 'com.tbuonomo:dotsindicator:4.2'
+    //implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+
 }
 apply plugin: 'com.google.gms.google-services'
