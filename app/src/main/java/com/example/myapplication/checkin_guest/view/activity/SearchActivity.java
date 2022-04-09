@@ -6,6 +6,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -16,10 +18,13 @@ import com.example.myapplication.checkin_guest.util.Util;
 import com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow1;
 import com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow2;
 import com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow3;
+import com.example.myapplication.checkin_guest.viewModel.LoginViewModel;
+import com.example.myapplication.checkin_guest.viewModel.SearchViewModel;
 
 public class SearchActivity extends AppCompatActivity {
     private final String TAG = "SearchActivity";
     private ActivitySearchBinding activitySearchBinding;
+    private SearchViewModel searchViewModel;
     Fragment frag_searchWindow1, frag_searchWindow2, frag_searchWindow3;
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -27,7 +32,13 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activitySearchBinding = DataBindingUtil.setContentView(this, R.layout.activity_search);
 
+        // view model 사용을 위한 초기화 작업
+        searchViewModel = new ViewModelProvider(this, new ViewModelProvider
+                .AndroidViewModelFactory(getApplication())).get(SearchViewModel.class);
+        searchViewModel.setParentContext(this);
+
         init();
+
         // 검색창 UI 관련 소스코드, 상태바 투명 및 바텀내비게이션 높이에 따른 레이아웃 페딩 설정
         Util.transparency_statusBar(this);
         activitySearchBinding.fragcontainer.setPadding(0, 0, 0, Util.getBottomNavigationHeight(getApplicationContext()));

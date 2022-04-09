@@ -16,31 +16,42 @@
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/radius_login.xml" value="0.1195" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/radius_search.xml" value="0.2965" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/search_bar_setting.xml" value="0.1" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/selector_switch.xml" value="0.2045" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/shape_switch_thumb.xml" value="0.1" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/shape_switch_track_off.xml" value="0.1" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/shape_switch_track_on.xml" value="0.192" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/square_background.xml" value="0.2125" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/transparent_calendar_element.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/font/notosans.xml" value="0.32535271483539974" />
-        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_login.xml" value="0.264" />
-        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_login.xml" value="0.19444444444444445" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_search.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_search_result.xml" value="0.264" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_sign_up.xml" value="0.176" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_smart_key.xml" value="0.264" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/bottom_sheet_search_result.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_bottom_sheet_search_result.xml" value="0.23802083333333332" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_chatting.xml" value="0.22418478260869565" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_email_certification.xml" value="0.23097826086956522" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_favorite.xml" value="0.13994565217391305" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_get_email.xml" value="0.1" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_my_info.xml" value="0.1824561403508772" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_phone_number_certification.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_search.xml" value="0.1" />
-        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_search_window1.xml" value="0.264" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_search_window1.xml" value="0.2" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_search_window2.xml" value="0.2" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_search_window3.xml" value="0.264" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_term_of_use.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/fragment_bottom_sheet_search_result.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/fragment_frag_search.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/item_recyclerview_ch.xml" value="0.264" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/item_recyclerview_mm.xml" value="0.1644021739130435" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/item_recyclerview_pp.xml" value="0.14688675302966986" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/item_recyclerview_rc.xml" value="0.1" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/item_recyclerview_sm.xml" value="0.2" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/item_recyclerview_sr.xml" value="0.264" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/item_viewpager_banner.xml" value="0.2" />
-        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17094017094017094" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/menu/search_menu.xml" value="0.21927083333333333" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/circle_progressbar.xml" value="0.1" />

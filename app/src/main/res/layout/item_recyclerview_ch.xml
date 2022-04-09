@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_sender"
+            android:scaleType="fitCenter"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/chat1"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txt_sender"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:fontFamily="@font/notosans"
+                android:text="sender"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/txt_msg"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:fontFamily="@font/notosans"
+                android:textSize="15sp"
+                android:text="message"/>
+            <TextView
+                android:id="@+id/txt_sendDate"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:fontFamily="@font/notosans_regular"
+                android:textSize="13sp"
+                android:text="send_time"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

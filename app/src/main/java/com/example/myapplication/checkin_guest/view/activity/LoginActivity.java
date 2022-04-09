@@ -1,9 +1,11 @@
 package com.example.myapplication.checkin_guest.view.activity;
 
+import static com.google.gson.reflect.TypeToken.get;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         activityLoginBinding.linearProgress.setVisibility(View.INVISIBLE);
 
         // view model 사용을 위한 초기화 작업
-        mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        mLoginViewModel = new ViewModelProvider(this, new ViewModelProvider
+                .AndroidViewModelFactory(getApplication())).get(LoginViewModel.class);
         mLoginViewModel.setParentContext(this);
 
         init();
@@ -49,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Logger.d(TAG, "Email Login Request");
+                //프로그레스바 실행 및 터치 막음
                 activityLoginBinding.linearProgress.setVisibility(View.VISIBLE);
                 // email과 password를 받아올때 앞뒤 공백을 제거하고 변수에 값을 삽입한다.
                 String email = activityLoginBinding.edtId.getText().toString().trim();
@@ -100,8 +104,10 @@ public class LoginActivity extends AppCompatActivity {
     private void checkEmailPassword(String email, String password){
         if(email.equals("")){
             Toast.makeText(getApplicationContext(), "이메일을 입력해주세요", Toast.LENGTH_SHORT).show();
+            activityLoginBinding.linearProgress.setVisibility(View.INVISIBLE);
         }else if(password.equals("")){
             Toast.makeText(getApplicationContext(), "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
+            activityLoginBinding.linearProgress.setVisibility(View.INVISIBLE);
         }else{
             //로그인 실행
             mLoginViewModel.onRequestSignInWithEmail(email, password);
@@ -111,8 +117,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == RC_SIGN_IN) {
+            activityLoginBinding.linearProgress.setVisibility(View.VISIBLE);
             mLoginViewModel.onActivityResult(data);
         }
     }
