@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapter_searchResult;
@@ -42,6 +44,10 @@ public class SearchResultActivity extends AppCompatActivity {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
         bottomSheetBehavior.setFitToContents(false);
         insert();
+
+
+
+
     }
     public void init(){
         bottomSheetBehavior = BottomSheetBehavior.from((View) activitySearchResultBinding.bottomSheet);
