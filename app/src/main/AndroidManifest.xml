@@ -20,11 +20,10 @@
             android:name=".view.activity.SmartKey"
             android:exported="true" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <action android:name="android.nfc.action.TECH_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain"/>
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
@@ -35,7 +34,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -60,6 +58,10 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="egtv4m8rr9" />
+        <meta-data
+            android:name="android.nfc.action.TECH_DISCOVERED"
+            android:resource="@xml/nfc_tech_filter"/>
+
     </application>
 
 </manifest>

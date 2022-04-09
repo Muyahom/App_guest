@@ -13,7 +13,9 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcEvent;
 import android.nfc.Tag;
+import android.nfc.tech.MifareClassic;
 import android.nfc.tech.Ndef;
+import android.nfc.tech.NfcA;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
@@ -31,7 +33,7 @@ import com.orhanobut.logger.Logger;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
-public class SmartKey extends AppCompatActivity{
+public class SmartKey extends AppCompatActivity {
     private final String TAG = SmartKey.class.getSimpleName();
     // 실제로 태그에 성공적으로 연결했는지 여부에 따라 표시될 메시지를 추가
     public static final String Error_Detected = "No NFC Tag Detected";
@@ -45,6 +47,7 @@ public class SmartKey extends AppCompatActivity{
     Context context;
     TextView txt_contents;
     private ActivitySmartKeyBinding activitySmartKeyBinding;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +65,7 @@ public class SmartKey extends AppCompatActivity{
         activitySmartKeyBinding.switchBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
+                if (b) {
                     //체크된 상태로 만들 시 코드
                     Log.d(TAG, "ON");
                     writeModeOn();
@@ -81,7 +84,7 @@ public class SmartKey extends AppCompatActivity{
                         Toast.makeText(context, Write_Error, Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
                     }
-               }else{
+                } else {
                     //체크된 상태 취소 시 코드
                     Log.d(TAG, "OFF");
                     writeModeOff();
@@ -90,7 +93,7 @@ public class SmartKey extends AppCompatActivity{
         });
 
         readFromIntent(getIntent());
-        pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), PendingIntent.FLAG_IMMUTABLE);
+        pendingIntent = PendingIntent.getActivity(this, 0, new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), PendingIntent.FLAG_MUTABLE);
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         tagDetected.addCategory(Intent.CATEGORY_DEFAULT);
         writeTagFilters = new IntentFilter[]{tagDetected};
@@ -98,6 +101,7 @@ public class SmartKey extends AppCompatActivity{
     }
 
     private void readFromIntent(Intent intent) {
+        Log.d(TAG, "readFromIntent");
         String action = intent.getAction();
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(action)
                 || NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)
@@ -117,7 +121,7 @@ public class SmartKey extends AppCompatActivity{
 
     private void buildTagViews(NdefMessage[] msgs) {
         if (msgs == null || msgs.length == 0) return;
-
+        Log.d(TAG, "buildTagViews");
         String text = "";
 //        String tagId = new String(msgs[0].getRecords()[0].getType());
         byte[] payload = msgs[0].getRecords()[0].getPayload();
@@ -136,19 +140,27 @@ public class SmartKey extends AppCompatActivity{
     }
 
     private void write(String text, Tag tag) throws IOException, FormatException {
+        Log.d(TAG, "write");
         NdefRecord[] records = {createRecord(text)};
         NdefMessage message = new NdefMessage(records);
+        Log.d(TAG, "write : "+tag.toString());
         // Get an instance of Ndef for the tag.
-        Ndef ndef = Ndef.get(tag);
-        // Enable I/O
-        ndef.connect();
-        // Write the message
-        ndef.writeNdefMessage(message);
+        NfcA nfcA = NfcA.get(tag);
+
+//        NFC
+//        nfcA.connect();
+//        nfcA.transceive(message);
+//        Ndef ndef = Ndef.get(tag);
+//        // Enable I/O
+//        ndef.connect();
+//        // Write the message
+//        ndef.writeNdefMessage(message);
         // Close the connection
-        ndef.close();
+//        ndef.close();
     }
 
     private NdefRecord createRecord(String text) throws UnsupportedEncodingException {
+        Log.d(TAG, "createRecord");
         String lang = "en";
         byte[] textBytes = text.getBytes();
         byte[] langBytes = lang.getBytes("US-ASCII");
@@ -161,19 +173,20 @@ public class SmartKey extends AppCompatActivity{
 
         // copy langbytes and textbytes into payload
         System.arraycopy(langBytes, 0, payload, 1, langLength);
-        System.arraycopy(langBytes, 0, payload, 1 + langLength, textLength);
-
+//        System.arraycopy(langBytes, 0, payload, 1 + langLength, textLength);=
         NdefRecord recordNFC = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], payload);
-
         return recordNFC;
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        Log.d(TAG, "onNewIntent");
+        this.intent = intent;
         setIntent(intent);
         readFromIntent(intent);
         if (NfcAdapter.ACTION_TAG_DISCOVERED.equals(intent.getAction())) {
+            Log.d(TAG, "myTag 초기화");
             myTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         }
     }
@@ -181,13 +194,25 @@ public class SmartKey extends AppCompatActivity{
     @Override
     public void onPause() {
         super.onPause();
+        Log.d(TAG, "onPause");
         writeModeOff();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume");
         writeModeOn();
+        try {
+            if (myTag != null) {
+                Log.d(TAG, myTag.toString());
+                write("PlainText|" + "smartkey", myTag);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (FormatException e) {
+            e.printStackTrace();
+        }
     }
 
     private void writeModeOn() {

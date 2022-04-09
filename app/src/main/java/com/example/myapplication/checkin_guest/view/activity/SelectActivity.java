@@ -12,10 +12,7 @@ import com.naver.maps.map.MapFragment;
 
 public class SelectActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
-
-
     private Fragment frag_select;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
