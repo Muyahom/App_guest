@@ -1,6 +1,5 @@
 package com.example.myapplication.checkin_guest.view.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -8,21 +7,20 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.ActivityMainBinding;
 import com.example.myapplication.checkin_guest.util.Util;
-import com.example.myapplication.checkin_guest.view.fragment.chattingWindow.FragChatting;
+import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_chatting;
+import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_favorite;
+import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_myInfo;
 import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_search;
-import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity";
     private ActivityMainBinding activityMainBinding;
 
-    private Fragment frag_search, fragChatting;
-
+    private Fragment frag_search, fragChatting, frag_favorite, frag_myInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +40,15 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_favorite:
                     basicScreenSetting();
+                    moveFrag(frag_favorite);
                     return true;
                 case R.id.navigation_message:
                     basicScreenSetting();
                     moveFrag(fragChatting);
                     return true;
                 case R.id.navigation_myinfor:
-                    basicScreenSetting();
+                    Util.setStatusBarColor(this, 1);
+                    moveFrag(frag_myInfo);
                     return true;
             }
             return false;
@@ -57,7 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void init() {
         frag_search = new Frag_search();
-        fragChatting = new FragChatting();
+        fragChatting = new Frag_chatting();
+        frag_favorite = new Frag_favorite();
+        frag_myInfo = new Frag_myInfo();
     }
 
     private void moveFrag(Fragment fragment){

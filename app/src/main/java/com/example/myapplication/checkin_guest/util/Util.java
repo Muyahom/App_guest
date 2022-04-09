@@ -67,7 +67,6 @@ public class Util {
 
     // 터치 막기
     public static void setTouchOff(Activity activity) {
-        //흰색으로 바꾸기
         activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 

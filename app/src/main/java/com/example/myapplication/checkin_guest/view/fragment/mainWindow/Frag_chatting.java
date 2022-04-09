@@ -1,4 +1,4 @@
-package com.example.myapplication.checkin_guest.view.fragment.chattingWindow;
+package com.example.myapplication.checkin_guest.view.fragment.mainWindow;
 
 import android.os.Bundle;
 
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragChattingBinding;
 
-public class FragChatting extends Fragment {
+public class Frag_chatting extends Fragment {
     private FragChattingBinding fragChattingBinding = null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class FragChatting extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         fragChattingBinding = DataBindingUtil.inflate(inflater, R.layout.frag_chatting, container, false);
-
+        fragChattingBinding.linearProgress.setVisibility(View.INVISIBLE);
 
         return fragChattingBinding.getRoot();
     }

@@ -40,7 +40,6 @@ public class LoginViewModel extends ViewModel {
         mActivityRef = new WeakReference<>(parentContext);
     }
 
-
     public ActionListener getActionListener(){
         return new ActionListener() {
             @Override
@@ -129,6 +128,4 @@ public class LoginViewModel extends ViewModel {
     public void onRequestSignInWithEmail(String email, String password){
         mEmailLoginExcutor.signInWithEmail(email, password);
     }
-
-
 }

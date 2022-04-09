@@ -60,7 +60,6 @@ public class LoginView {
             setProgressInVisible();
         });
     }
-
      /*
                           이메일 로그인 메서드 모음
                                                                  */

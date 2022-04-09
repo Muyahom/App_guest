@@ -23,7 +23,6 @@ public class EmailLoginExcutor {
 
     public EmailLoginExcutor(){
         mAuth = FirebaseAuth.getInstance();
-
     }
 
     public void loadUserData(){

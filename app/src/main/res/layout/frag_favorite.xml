@@ -64,13 +64,13 @@
                     android:layout_height="match_parent"
                     android:fontFamily="@font/notosans_bold"
                     android:textColor="@color/black"
-                    android:text="채팅방"
+                    android:text="북마크"
                     android:textSize="28sp" />
 
             </androidx.appcompat.widget.Toolbar>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_ch"
+                android:id="@+id/recyclerview_bm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -80,6 +80,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/toolbar"
                 app:layout_constraintVertical_bias="0.081" />
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

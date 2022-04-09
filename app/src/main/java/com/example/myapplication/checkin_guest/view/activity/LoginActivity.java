@@ -1,9 +1,11 @@
 package com.example.myapplication.checkin_guest.view.activity;
 
+import static com.google.gson.reflect.TypeToken.get;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,7 +41,8 @@ public class LoginActivity extends AppCompatActivity {
         activityLoginBinding.linearProgress.setVisibility(View.INVISIBLE);
 
         // view model 사용을 위한 초기화 작업
-        mLoginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
+        mLoginViewModel = new ViewModelProvider(this, new ViewModelProvider
+                .AndroidViewModelFactory(getApplication())).get(LoginViewModel.class);
         mLoginViewModel.setParentContext(this);
 
         init();
@@ -51,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                 Logger.d(TAG, "Email Login Request");
                 //프로그레스바 실행 및 터치 막음
                 activityLoginBinding.linearProgress.setVisibility(View.VISIBLE);
-                Util.setTouchOff(getParent());
                 // email과 password를 받아올때 앞뒤 공백을 제거하고 변수에 값을 삽입한다.
                 String email = activityLoginBinding.edtId.getText().toString().trim();
                 String password = activityLoginBinding.edtPassword.getText().toString().trim();
