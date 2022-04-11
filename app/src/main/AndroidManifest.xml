@@ -4,6 +4,7 @@
     package="com.example.myapplication.checkin_guest">
 
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name = "android.permission.VIBRATE"/>
 
     <uses-feature
         android:name="android.hardware.nfc"
@@ -21,6 +22,7 @@
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
+                <action android:name="android.nfc.action.TAG_DISCOVERED"/>
                 <action android:name="android.nfc.action.TECH_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain"/>

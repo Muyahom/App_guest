@@ -59,12 +59,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     public ErrorListener getErrorListener(){
-        return new ErrorListener() {
-            @Override
-            public void NotifySignInEmailError() {
-                Toast.makeText(mActivityRef.get(), "이메일, 비밀번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show();
-            }
-        };
+        return () -> Toast.makeText(mActivityRef.get(), "이메일, 비밀번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show();
     }
 
     private void finishActivity() {
