@@ -25,6 +25,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/height_viewpager_selectimg"
                         android:orientation="horizontal">
+
                     </androidx.viewpager2.widget.ViewPager2>
 
 

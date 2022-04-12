@@ -55,6 +55,16 @@
         <activity
             android:name=".view.activity.PayActivity"
             android:exported="false" />
+        <activity
+            android:name=".view.activity.AccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.AlarmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.PopupActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="egtv4m8rr9" />

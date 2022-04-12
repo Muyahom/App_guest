@@ -14,6 +14,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/radius_search">
 
+
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
@@ -308,9 +310,10 @@
                         android:id="@+id/pat_m"/>
                 </LinearLayout>
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/pay"
+                    android:backgroundTint="#156D82"
                     android:text="결제하기"/>
             </LinearLayout>
 

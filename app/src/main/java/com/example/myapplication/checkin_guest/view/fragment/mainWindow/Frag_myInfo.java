@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragMyInfoBinding;
+import com.example.myapplication.checkin_guest.view.activity.AccountActivity;
+import com.example.myapplication.checkin_guest.view.activity.AlarmActivity;
 import com.example.myapplication.checkin_guest.view.activity.SmartKey;
 
 public class Frag_myInfo extends Fragment {
@@ -28,6 +30,23 @@ public class Frag_myInfo extends Fragment {
                 startActivity(intent);
             }
         });
+        //계정관리정보
+        fragMyInfoBinding.txtAccountManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AccountActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fragMyInfoBinding.txtAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AlarmActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return fragMyInfoBinding.getRoot();
     }
 }
