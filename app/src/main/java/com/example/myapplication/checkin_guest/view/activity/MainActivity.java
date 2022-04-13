@@ -1,6 +1,7 @@
 package com.example.myapplication.checkin_guest.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.ActivityMainBinding;
@@ -24,7 +26,24 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding activityMainBinding;
     private MainViewModel mainViewModel;
 
+    //뒤로가기 종료
+    private long backKeyPressedTime = 0;
+
     private Fragment frag_search, fragChatting, frag_favorite, frag_myInfo;
+
+    @Override
+    public void onBackPressed() {
+        // 기존 뒤로가기 버튼의 기능을 막기위해 주석처리 또는 삭제
+        // super.onBackPressed();
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis();
+            Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
+            return;
+        } else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            ActivityCompat.finishAffinity(this);
+            moveTaskToBack(true);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

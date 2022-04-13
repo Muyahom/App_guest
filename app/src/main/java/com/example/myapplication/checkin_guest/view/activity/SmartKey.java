@@ -69,13 +69,6 @@ public class SmartKey extends AppCompatActivity {
     public void onBackPressed() {
         // 기존 뒤로가기 버튼의 기능을 막기위해 주석처리 또는 삭제
         // super.onBackPressed();
-
-        // 마지막으로 뒤로가기 버튼을 눌렀던 시간에 2초를 더해 현재시간과 비교 후
-        // 마지막으로 뒤로가기 버튼을 눌렀던 시간이 2초가 지났으면 Toast Show
-        // 2000 milliseconds = 2 seconds
-        // 마지막으로 뒤로가기 버튼을 눌렀던 시간에 2초를 더해 현재시간과 비교 후
-        // 마지막으로 뒤로가기 버튼을 눌렀던 시간이 2초가 지나지 않았으면 종료
-        // 우선 스위치가 활성화 되있는 상태에서 뒤로가기 한번 클릭 시 즉시 신호 전송 종료
         if (writeMode) {
             activitySmartKeyBinding.switchBtn.setChecked(false);
         } else if (System.currentTimeMillis() > backKeyPressedTime + 2000) {

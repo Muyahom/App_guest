@@ -1,5 +1,6 @@
 package com.example.myapplication.checkin_guest.view.fragment.mainWindow;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragFavoriteBinding;
 import com.example.myapplication.checkin_guest.util.Util;
+import com.example.myapplication.checkin_guest.view.activity.LoginActivity;
 import com.example.myapplication.checkin_guest.viewModel.MainViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,6 +25,8 @@ public class Frag_favorite extends Fragment {
     private final String TAG = Frag_favorite.class.getSimpleName();
     private FragFavoriteBinding fragFavoriteBinding = null;
     private MainViewModel mainViewModel;
+    
+    //로그인 관련 변수
     private FirebaseUser user;
 
     @Override
@@ -44,6 +48,11 @@ public class Frag_favorite extends Fragment {
             fragFavoriteBinding.linearProgress.setVisibility(View.INVISIBLE);
             fragFavoriteBinding.recyclerviewBm.setVisibility(View.INVISIBLE);
         }
+
+        fragFavoriteBinding.btnLogin.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent);
+        });
 
         return fragFavoriteBinding.getRoot();
     }
