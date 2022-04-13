@@ -14,6 +14,7 @@ import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragMyInfoBinding;
 import com.example.myapplication.checkin_guest.view.activity.AccountActivity;
 import com.example.myapplication.checkin_guest.view.activity.AlarmActivity;
+import com.example.myapplication.checkin_guest.view.activity.HelpActivity;
 import com.example.myapplication.checkin_guest.view.activity.SmartKey;
 
 public class Frag_myInfo extends Fragment {
@@ -43,6 +44,14 @@ public class Frag_myInfo extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), AlarmActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fragMyInfoBinding.txtHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HelpActivity.class);
                 startActivity(intent);
             }
         });

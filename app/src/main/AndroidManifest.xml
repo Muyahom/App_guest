@@ -63,7 +63,12 @@
             android:exported="false" />
         <activity
             android:name=".view.activity.PopupActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
+        <activity
+            android:name=".view.activity.HelpActivity"
+            android:exported="false"
+            />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
