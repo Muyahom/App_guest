@@ -20,6 +20,7 @@ import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_myI
 import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_search;
 import com.example.myapplication.checkin_guest.viewModel.LoginViewModel;
 import com.example.myapplication.checkin_guest.viewModel.MainViewModel;
+import com.orhanobut.logger.Logger;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = MainActivity.class.getSimpleName();
@@ -55,11 +56,8 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.setParentContext(this);
 
         init();
-
         searchScreenSetting();
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_view, frag_search).commit();
-
         activityMainBinding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.navigation_main:
@@ -80,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Logger.d(TAG, "자동로그인 기능 실행");
+        // google 및 email 로그인 여부 확인
     }
 
     private void init() {

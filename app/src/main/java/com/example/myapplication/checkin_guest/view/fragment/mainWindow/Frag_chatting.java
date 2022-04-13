@@ -39,7 +39,7 @@ public class Frag_chatting extends Fragment {
         mainViewModel = new ViewModelProvider(this, new ViewModelProvider
                 .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
 
-        if(isLogin()){
+        if(mainViewModel.isLogin()){
             //로그인이 되있는 상태라면
             Log.d(TAG, "로그인 돼있음");
             fragChattingBinding.linearNotLogin.setVisibility(View.INVISIBLE);
@@ -58,15 +58,5 @@ public class Frag_chatting extends Fragment {
         return fragChattingBinding.getRoot();
     }
 
-    //로그인 체크
-    private boolean isLogin(){
-        boolean check = false;
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        this.user = mAuth.getCurrentUser();
-        if(user != null){
-            check = true;
-        }
-        Log.d(TAG, String.valueOf(check));
-        return check;
-    }
+
 }

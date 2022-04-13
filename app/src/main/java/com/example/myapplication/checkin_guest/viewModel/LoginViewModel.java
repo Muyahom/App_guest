@@ -23,13 +23,12 @@ public class LoginViewModel extends ViewModel {
     private WeakReference<Activity> mActivityRef;
 
     //firebase 로그인 처리를 위한 변수
-    // LiveData
+    //LiveData
     private GoogleLoginExecutor mGoogleLoginExecutor;
     private static final int RC_SIGN_IN = 9001;
 
     //이메일 로그인 처리를 위한 변수
     private EmailLoginExcutor mEmailLoginExcutor;
-
 
     public LoginViewModel(){
         Logger.addLogAdapter(new AndroidLogAdapter());

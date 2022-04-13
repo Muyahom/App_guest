@@ -25,7 +25,7 @@ public class Frag_favorite extends Fragment {
     private final String TAG = Frag_favorite.class.getSimpleName();
     private FragFavoriteBinding fragFavoriteBinding = null;
     private MainViewModel mainViewModel;
-    
+
     //로그인 관련 변수
     private FirebaseUser user;
 
@@ -34,10 +34,10 @@ public class Frag_favorite extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragFavoriteBinding = DataBindingUtil.inflate(inflater, R.layout.frag_favorite, container, false);
-        new ViewModelProvider(this, new ViewModelProvider
+        mainViewModel = new ViewModelProvider(this, new ViewModelProvider
                 .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
 
-        if(isLogin()){
+        if(mainViewModel.isLogin()){
             //로그인이 되있는 상태라면
             Log.d(TAG, "로그인 돼있음");
             fragFavoriteBinding.linearNotLogin.setVisibility(View.INVISIBLE);
@@ -55,17 +55,5 @@ public class Frag_favorite extends Fragment {
         });
 
         return fragFavoriteBinding.getRoot();
-    }
-
-    //로그인 체크
-    private boolean isLogin(){
-        boolean check = false;
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        this.user = mAuth.getCurrentUser();
-        if(user != null){
-            check = true;
-        }
-        Log.d(TAG, String.valueOf(check));
-        return check;
     }
 }

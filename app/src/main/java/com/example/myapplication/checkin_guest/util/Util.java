@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.core.view.WindowInsetsControllerCompat;
 
@@ -73,6 +74,12 @@ public class Util {
     // 터치 재활성화
     public static void setTouchOn(Activity activity) {
         activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    // 키보드 내리기
+    public static void keyboardOff(Activity activity){
+        InputMethodManager manager = (InputMethodManager)activity.getSystemService(activity.INPUT_METHOD_SERVICE);
+        manager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
 }

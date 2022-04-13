@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.example.myapplication.checkin_guest.R;
@@ -57,38 +58,27 @@ public class LoginActivity extends AppCompatActivity {
                 // email과 password를 받아올때 앞뒤 공백을 제거하고 변수에 값을 삽입한다.
                 String email = activityLoginBinding.edtId.getText().toString().trim();
                 String password = activityLoginBinding.edtPassword.getText().toString().trim();
+
+                Util.keyboardOff(LoginActivity.this);
                 //조건 검사 후 로그인 실행
                 checkEmailPassword(email, password);
             }
         });
 
         //구글 로그인 버튼 클릭 시
-        activityLoginBinding.signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Logger.d(TAG, "Google Login Request");
-                mLoginViewModel.onRequestSignInWithGoogle();
-            }
+        activityLoginBinding.signInButton.setOnClickListener(view -> {
+            Logger.d(TAG, "Google Login Request");
+            mLoginViewModel.onRequestSignInWithGoogle();
         });
 
         //회원가입 버튼 클릭시
-        activityLoginBinding.btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Logger.d(TAG, "sign up");
-                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
-                startActivity(intent);
-            }
+        activityLoginBinding.btnSignUp.setOnClickListener(view -> {
+            Logger.d(TAG, "sign up");
+            Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+            startActivity(intent);
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Logger.d(TAG, "자동로그인 기능 실행");
-        // google 및 email 로그인 여부 확인 
-        mLoginViewModel.loadUserData();
-    }
 
     private void init() {
         Logger.addLogAdapter(new AndroidLogAdapter());
