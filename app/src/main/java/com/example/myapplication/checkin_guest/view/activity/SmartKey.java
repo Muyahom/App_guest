@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -12,37 +11,27 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.nfc.FormatException;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
-import android.nfc.NfcEvent;
 import android.nfc.Tag;
-import android.nfc.tech.MifareClassic;
 import android.nfc.tech.MifareUltralight;
 import android.nfc.tech.Ndef;
 import android.nfc.tech.NfcA;
+import android.nfc.tech.NfcF;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.os.VibratorManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.ActivitySmartKeyBinding;
 import com.example.myapplication.checkin_guest.util.Util;
-import com.example.myapplication.checkin_guest.viewModel.LoginViewModel;
 import com.example.myapplication.checkin_guest.viewModel.SmartKeyViewModel;
-import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -74,7 +63,6 @@ public class SmartKey extends AppCompatActivity {
     private Context context;
     private ActivitySmartKeyBinding activitySmartKeyBinding;
     private Intent intent;
-
     private Thread vibeThread;
 
     @Override
@@ -88,7 +76,7 @@ public class SmartKey extends AppCompatActivity {
         // 마지막으로 뒤로가기 버튼을 눌렀던 시간에 2초를 더해 현재시간과 비교 후
         // 마지막으로 뒤로가기 버튼을 눌렀던 시간이 2초가 지나지 않았으면 종료
         // 우선 스위치가 활성화 되있는 상태에서 뒤로가기 한번 클릭 시 즉시 신호 전송 종료
-        if(writeMode){
+        if (writeMode) {
             activitySmartKeyBinding.switchBtn.setChecked(false);
         } else if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
             backKeyPressedTime = System.currentTimeMillis();
@@ -136,7 +124,6 @@ public class SmartKey extends AppCompatActivity {
         IntentFilter tagDetected = new IntentFilter(NfcAdapter.ACTION_TAG_DISCOVERED);
         tagDetected.addCategory(Intent.CATEGORY_DEFAULT);
         writeTagFilters = new IntentFilter[]{tagDetected};
-
     }
 
     @Override
@@ -150,6 +137,7 @@ public class SmartKey extends AppCompatActivity {
             Log.d(TAG, "myTag 초기화");
             myTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
         }
+        myTag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
     }
 
     @Override
@@ -179,7 +167,8 @@ public class SmartKey extends AppCompatActivity {
             try {
                 if (myTag != null) {
                     Log.d(TAG, myTag.toString());
-                    write("941399", myTag);
+//                    write("941399", myTag);
+                    writeNdef("9413", myTag);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -199,12 +188,14 @@ public class SmartKey extends AppCompatActivity {
         writeModeOn();
         activitySmartKeyBinding.linearLodgingInfo.setVisibility(View.INVISIBLE);
         activitySmartKeyBinding.txtTitle.setVisibility(View.INVISIBLE);
+
         //자연스러운 배경전환
         @SuppressLint("ResourceAsColor") ColorDrawable[] colorDrawables = {new ColorDrawable(R.color.remote_color), new ColorDrawable(Color.BLACK)};
         activitySmartKeyBinding.constraintLayout.setBackground(null);
         TransitionDrawable transitionDrawable = new TransitionDrawable(colorDrawables);
         activitySmartKeyBinding.motionLayout.setBackground(transitionDrawable);
         transitionDrawable.startTransition(1000);
+
         //진동 수행
         vibeThread = new Thread(new Runnable() {
             public void run() {
@@ -231,9 +222,7 @@ public class SmartKey extends AppCompatActivity {
         activitySmartKeyBinding.linearLodgingInfo.setVisibility(View.VISIBLE);
         activitySmartKeyBinding.txtTitle.setVisibility(View.VISIBLE);
         activitySmartKeyBinding.motionLayout.setBackground(getDrawable(R.color.white));
-
         activitySmartKeyBinding.constraintLayout.setBackground(getDrawable(R.drawable.gradient_main_logo));
-
         vibeOff();
     }
 
@@ -250,9 +239,68 @@ public class SmartKey extends AppCompatActivity {
         writeTag(tag, text);
     }
 
+    private void writeNdef(String text, Tag tag) throws IOException, FormatException {
+//        NfcF nfcF = NfcF.get(tag);
+//        nfcF.connect();
+
+        Log.d(TAG, "write");
+        // Get an instance of Ndef for the tag.
+        Ndef ndef = Ndef.get(tag);
+        try {
+            // Enable I/O
+            ndef.connect();
+            // Write the message
+            Log.d(TAG, "ndef is Connected? : " + ndef.isConnected());
+            Log.d(TAG, "ndef is writable? "+ndef.isWritable());
+            Log.d(TAG, "ndef is null? : " + (ndef==null));
+            ndef.writeNdefMessage(getTextAsNdef());
+//            activitySmartKeyBinding.switchBtn.setChecked(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "잘못된 태깅입니다.", Toast.LENGTH_SHORT).show();
+            activitySmartKeyBinding.switchBtn.setChecked(false);
+        } finally {
+            // Close the connection
+//            activitySmartKeyBinding.switchBtn.setChecked(false);
+            ndef.close();
+        }
+    }
+
+    private NdefMessage getTextAsNdef() {
+        String mWriteText = "9413";
+        byte[] textBytes = mWriteText.getBytes();
+
+        NdefRecord textRecord = new NdefRecord(NdefRecord.TNF_MIME_MEDIA,
+                "text/plain".getBytes(),
+                new byte[] {},
+                textBytes);
+        return new NdefMessage(new NdefRecord[] {textRecord});
+
+    }
+
+    private NdefRecord createRecord(String text) throws UnsupportedEncodingException {
+        String lang = "en";
+        byte[] textBytes = text.getBytes();
+        byte[] langBytes = lang.getBytes("US-ASCII");
+        int langLength = langBytes.length;
+        int textLength = textBytes.length;
+        byte[] payload = new byte[1 + langLength + textLength];
+
+        // set status byte (see NDEF spec for actual bits)
+        payload[0] = (byte) langLength;
+
+        // copy langbytes and textbytes into payload
+        System.arraycopy(langBytes, 0, payload, 1, langLength);
+        System.arraycopy(textBytes, 0, payload, 1 + langLength, textLength);
+
+        NdefRecord recordNFC = new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], payload);
+
+        return recordNFC;
+    }
+
+
     public void writeTag(Tag tag, String tagText) {
         MifareUltralight ultralight = MifareUltralight.get(tag);
-
         try {
             ultralight.connect();
             ultralight.writePage(4, tagText.getBytes(Charset.forName("US-ASCII")));
@@ -286,12 +334,10 @@ public class SmartKey extends AppCompatActivity {
         vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE)); // 0.5초간 진동
     }
 
-    private void vibeOff(){
+    private void vibeOff() {
         //진동 끄기
         if (vibeThread != null) {
             vibeThread.interrupt();
         }
     }
-
-
 }

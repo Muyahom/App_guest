@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
@@ -15,10 +16,13 @@ import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_cha
 import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_favorite;
 import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_myInfo;
 import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_search;
+import com.example.myapplication.checkin_guest.viewModel.LoginViewModel;
+import com.example.myapplication.checkin_guest.viewModel.MainViewModel;
 
 public class MainActivity extends AppCompatActivity {
-    private final String TAG = "MainActivity";
+    private final String TAG = MainActivity.class.getSimpleName();
     private ActivityMainBinding activityMainBinding;
+    private MainViewModel mainViewModel;
 
     private Fragment frag_search, fragChatting, frag_favorite, frag_myInfo;
 
@@ -26,6 +30,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        mainViewModel = new ViewModelProvider(this, new ViewModelProvider
+                .AndroidViewModelFactory(getApplication())).get(MainViewModel.class);
+        mainViewModel.setParentContext(this);
 
         init();
 
@@ -65,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     private void moveFrag(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.replace(R.id.fragment_container_view, fragment).commit();
     }
 

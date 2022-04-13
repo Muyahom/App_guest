@@ -42,7 +42,8 @@ public class Frag_searchWindow1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragSearchWindow1Binding = DataBindingUtil.inflate(inflater, R.layout.frag_search_window1, container, false);
-
+        //앱 최초 실행시 추천 검색어 창을 비활성화
+        fragSearchWindow1Binding.nestedScrollView.setVisibility(View.INVISIBLE);
 
         init();
 
@@ -89,7 +90,11 @@ public class Frag_searchWindow1 extends Fragment {
                 Log.d(TAG, "입력 글자 : " + newText);
                 if (!newText.equals("")) {
                     search(newText);
+                    fragSearchWindow1Binding.nestedScrollView.setVisibility(View.VISIBLE);
+                    fragSearchWindow1Binding.recentSearch.setVisibility(View.INVISIBLE);
                 }else{
+                    fragSearchWindow1Binding.nestedScrollView.setVisibility(View.INVISIBLE);
+                    fragSearchWindow1Binding.recentSearch.setVisibility(View.VISIBLE);
                     recyclerViewAdapter_sm.clearMList();
                 }
                 return true;

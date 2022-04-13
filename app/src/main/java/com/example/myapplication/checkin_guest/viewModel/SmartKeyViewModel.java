@@ -32,6 +32,7 @@ public class SmartKeyViewModel extends ViewModel {
             Logger.d(TAG + "NFC is not available");
             Toast.makeText(mActivityRef.get(), "NFC를 활성화 해주세요.", Toast.LENGTH_LONG).show();
         }
+
     }
 
     public MutableLiveData<NfcAdapter> getNfcAdpater() {

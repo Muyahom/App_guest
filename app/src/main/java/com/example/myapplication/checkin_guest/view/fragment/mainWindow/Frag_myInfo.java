@@ -21,12 +21,9 @@ public class Frag_myInfo extends Fragment {
                              Bundle savedInstanceState) {
         fragMyInfoBinding = DataBindingUtil.inflate(inflater, R.layout.frag_my_info, container, false);
 
-        fragMyInfoBinding.txtReservation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), SmartKey.class);
-                startActivity(intent);
-            }
+        fragMyInfoBinding.txtReservation.setOnClickListener(view -> {
+            Intent intent = new Intent(getActivity(), SmartKey.class);
+            startActivity(intent);
         });
         return fragMyInfoBinding.getRoot();
     }
