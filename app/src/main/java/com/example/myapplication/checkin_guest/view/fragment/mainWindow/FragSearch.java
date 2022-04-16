@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,36 +20,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.view.WindowManager;
 
 import com.example.myapplication.checkin_guest.R;
-import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapter_Popular;
-import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapter_Recommendation;
+import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapterPopular;
+import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapterRecommendation;
 import com.example.myapplication.checkin_guest.adapter.ViewPagerAdapterBanner;
 import com.example.myapplication.checkin_guest.databinding.FragSearchBinding;
+import com.example.myapplication.checkin_guest.model.Banner;
 import com.example.myapplication.checkin_guest.model.PopularItem;
 import com.example.myapplication.checkin_guest.model.RecommendationItem;
 import com.example.myapplication.checkin_guest.model.ViewPageDataBanner;
 import com.example.myapplication.checkin_guest.util.Util;
 import com.example.myapplication.checkin_guest.view.activity.SearchActivity;
+import com.example.myapplication.checkin_guest.viewModel.MainViewModel;
 
 import java.util.ArrayList;
 
-public class Frag_search extends Fragment {
+public class FragSearch extends Fragment {
     private final String TAG = "Frag_search";
     private FragSearchBinding fragSearchBinding = null;
-    private Util util;
+    private MainViewModel mainViewModel;
 
     //배너 광고 관련 변수
     private ViewPagerAdapterBanner viewPagerAdapterBanner;
-    private ArrayList<ViewPageDataBanner> list_banner;
+    private ArrayList<Banner> list_banner;
 
     //추천 숙소 관련 변수
-    private RecyclerViewAdapter_Recommendation recyclerViewAdapter_recommendation;
+    private RecyclerViewAdapterRecommendation recyclerViewAdapter_recommendation;
     private ArrayList<RecommendationItem> list_rc;
 
     //인기 있는 숙소 관련 변수
-    private RecyclerViewAdapter_Popular recyclerViewAdapter_popular;
+    private RecyclerViewAdapterPopular recyclerViewAdapter_popular;
     private ArrayList<PopularItem> list_pp;
 
     @Override
@@ -63,6 +65,12 @@ public class Frag_search extends Fragment {
 
         fragSearchBinding = DataBindingUtil.inflate(inflater, R.layout.frag_search, container, false);
 
+        mainViewModel = new ViewModelProvider(this, new ViewModelProvider
+                .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+
+        mainViewModel.setFireStoreExcutorListener();
+        mainViewModel.setFireStorageExcutorListener();
+
         //사용자가 스크롤 하는 경우 UI 색상 변환을 위한 소스 코드
         fragSearchBinding.appbar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
             Log.d(TAG, "addOnOffsetChangedListener" + Math.abs(verticalOffset) + " " + getYMax() / 2);
@@ -70,13 +78,13 @@ public class Frag_search extends Fragment {
                 //위로 거의 다 스크롤 하면 appbar 영역을 white로 설정 및 상태바 글자 색 black
                 Log.d(TAG, "Math.abs(verticalOffset) >= getYMax() / 2");
                 fragSearchBinding.appbar.setBackgroundResource(R.color.white);
-                util.setStatusBarColor(getActivity(), 2);
+                Util.setStatusBarColor(getActivity(), 2);
 
             } else {
                 //내린다면 다시 기존 배경색으로 설정 및 상태바 글자 색 white
                 Log.d(TAG, "else");
                 fragSearchBinding.appbar.setBackgroundResource(R.drawable.gradient_main_logo);
-                util.setStatusBarColor(getActivity(), 1);
+                Util.setStatusBarColor(getActivity(), 1);
             }
         });
 
@@ -87,18 +95,34 @@ public class Frag_search extends Fragment {
             }
         });
 
+
         init();
-        insertTemp();
+
+        //배너 관련 변수 초기화
+        mainViewModel.getListBanner().observe(getActivity(), data->{
+            if(mainViewModel.getListBanner().getValue() != null){
+                Log.d(TAG, "getBanner : Observe");
+                list_banner = mainViewModel.getListBanner().getValue();
+                viewPagerAdapterBanner.setListData(list_banner);
+            }
+        });
+
+        getBanner();
+
+        //삭제 예정 메서드
         insertTemp_rc();
         insertTemp_pp();
         return fragSearchBinding.getRoot();
     }
 
     private void init(){
-        util = new Util();
-        viewPagerAdapterBanner = new ViewPagerAdapterBanner();
-        recyclerViewAdapter_recommendation = new RecyclerViewAdapter_Recommendation();
-        recyclerViewAdapter_popular = new RecyclerViewAdapter_Popular();
+        //adapter 초기화
+        viewPagerAdapterBanner = new ViewPagerAdapterBanner(getContext());
+        recyclerViewAdapter_recommendation = new RecyclerViewAdapterRecommendation();
+        recyclerViewAdapter_popular = new RecyclerViewAdapterPopular();
+        
+        fragSearchBinding.viewPagerBanner.setAdapter(viewPagerAdapterBanner);
+        
         //recyclerview 가로 지정
         list_banner = new ArrayList<>();
         fragSearchBinding.recyclerViewRc.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
@@ -127,21 +151,10 @@ public class Frag_search extends Fragment {
         }
     }
 
-    //임시 데이터 삽입 - 삭제 예정
-    private void insertTemp(){
-        ArrayList<ViewPageDataBanner> list = new ArrayList<>();
-        ViewPageDataBanner viewPageDataBanner1 = new ViewPageDataBanner();
-        BitmapDrawable drawable1 = (BitmapDrawable) getResources().getDrawable(R.drawable.ad);
-        Bitmap bitmap1 = drawable1.getBitmap();
-        viewPageDataBanner1.setBitmap(bitmap1);
-        ViewPageDataBanner viewPageDataBanner2 = new ViewPageDataBanner();
-        BitmapDrawable drawable2 = (BitmapDrawable) getResources().getDrawable(R.drawable.gangneung);
-        Bitmap bitmap2 = drawable2.getBitmap();
-        viewPageDataBanner2.setBitmap(bitmap2);
-        list.add(viewPageDataBanner1);
-        list.add(viewPageDataBanner2);
-        viewPagerAdapterBanner.setListData(list);
-        fragSearchBinding.viewPagerBanner.setAdapter(viewPagerAdapterBanner);
+    /*서버로 부터 banner를 가져온다.*/
+    private void getBanner(){
+        mainViewModel.getBanner();
+
     }
 
     //임시 데이터 삽입 - 삭제 예정

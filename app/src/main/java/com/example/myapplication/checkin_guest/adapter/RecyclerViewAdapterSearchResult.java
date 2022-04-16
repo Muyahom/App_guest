@@ -12,12 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.model.LodgingItem;
-import com.example.myapplication.checkin_guest.model.RecommendationItem;
 import com.example.myapplication.checkin_guest.view.activity.SelectActivity;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter_searchResult extends RecyclerView.Adapter<RecyclerViewAdapter_searchResult.ViewHolder> {
+public class RecyclerViewAdapterSearchResult extends RecyclerView.Adapter<RecyclerViewAdapterSearchResult.ViewHolder> {
     private ArrayList<LodgingItem> mList;
 
     public void set_mList(ArrayList<LodgingItem> mList){

@@ -2,8 +2,6 @@ package com.example.myapplication.checkin_guest.model;
 
 import android.graphics.Bitmap;
 
-import lombok.Getter;
-import lombok.Setter;
 
 public class ChattingItem {
     private Bitmap bitmap;

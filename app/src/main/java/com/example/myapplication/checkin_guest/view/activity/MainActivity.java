@@ -14,11 +14,10 @@ import android.widget.Toast;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.ActivityMainBinding;
 import com.example.myapplication.checkin_guest.util.Util;
-import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_chatting;
-import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_favorite;
-import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_myInfo;
-import com.example.myapplication.checkin_guest.view.fragment.mainWindow.Frag_search;
-import com.example.myapplication.checkin_guest.viewModel.LoginViewModel;
+import com.example.myapplication.checkin_guest.view.fragment.mainWindow.FragChatting;
+import com.example.myapplication.checkin_guest.view.fragment.mainWindow.FragFavorite;
+import com.example.myapplication.checkin_guest.view.fragment.mainWindow.FragMyInfo;
+import com.example.myapplication.checkin_guest.view.fragment.mainWindow.FragSearch;
 import com.example.myapplication.checkin_guest.viewModel.MainViewModel;
 import com.orhanobut.logger.Logger;
 
@@ -88,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        frag_search = new Frag_search();
-        fragChatting = new Frag_chatting();
-        frag_favorite = new Frag_favorite();
-        frag_myInfo = new Frag_myInfo();
+        frag_search = new FragSearch();
+        fragChatting = new FragChatting();
+        frag_favorite = new FragFavorite();
+        frag_myInfo = new FragMyInfo();
     }
 
     private void moveFrag(Fragment fragment){

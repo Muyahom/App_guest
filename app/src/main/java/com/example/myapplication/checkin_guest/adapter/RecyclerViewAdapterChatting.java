@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.model.ChattingItem;
-import com.example.myapplication.checkin_guest.model.PopularItem;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter_chatting extends RecyclerView.Adapter<RecyclerViewAdapter_chatting.ViewHolder> {
+public class RecyclerViewAdapterChatting extends RecyclerView.Adapter<RecyclerViewAdapterChatting.ViewHolder> {
     ArrayList<ChattingItem> listData;
 
     public void setListData(ArrayList<ChattingItem> listData) {
@@ -43,9 +42,9 @@ public class RecyclerViewAdapter_chatting extends RecyclerView.Adapter<RecyclerV
     }
     @NonNull
     @Override
-    public RecyclerViewAdapter_chatting.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewAdapterChatting.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_ch, parent, false);
-        return new RecyclerViewAdapter_chatting.ViewHolder(view);
+        return new RecyclerViewAdapterChatting.ViewHolder(view);
     }
 
     @Override

@@ -16,11 +16,10 @@ import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragChattingBinding;
 import com.example.myapplication.checkin_guest.view.activity.LoginActivity;
 import com.example.myapplication.checkin_guest.viewModel.MainViewModel;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Frag_chatting extends Fragment {
-    private final String TAG = Frag_chatting.class.getSimpleName();
+public class FragChatting extends Fragment {
+    private final String TAG = FragChatting.class.getSimpleName();
     private FragChattingBinding fragChattingBinding = null;
     private MainViewModel mainViewModel;
 

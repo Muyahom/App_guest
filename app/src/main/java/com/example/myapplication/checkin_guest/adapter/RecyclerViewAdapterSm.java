@@ -14,7 +14,7 @@ import com.example.myapplication.checkin_guest.model.City;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter_sm extends RecyclerView.Adapter<RecyclerViewAdapter_sm.ViewHolder> {
+public class RecyclerViewAdapterSm extends RecyclerView.Adapter<RecyclerViewAdapterSm.ViewHolder> {
     private ArrayList<City> mList;
 
     public void setmList(ArrayList<City> list){
@@ -44,13 +44,13 @@ public class RecyclerViewAdapter_sm extends RecyclerView.Adapter<RecyclerViewAda
 
     @NonNull
     @Override
-    public RecyclerViewAdapter_sm.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerViewAdapterSm.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_sm, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewAdapter_sm.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerViewAdapterSm.ViewHolder holder, int position) {
         holder.bind(mList.get(position));
     }
 

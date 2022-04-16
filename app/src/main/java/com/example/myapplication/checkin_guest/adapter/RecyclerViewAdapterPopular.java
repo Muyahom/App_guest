@@ -9,16 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.checkin_guest.R;
-import com.example.myapplication.checkin_guest.model.RecommendationItem;
-import com.example.myapplication.checkin_guest.model.ViewPageDataBanner;
+import com.example.myapplication.checkin_guest.model.PopularItem;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter_Recommendation extends RecyclerView.Adapter<RecyclerViewAdapter_Recommendation.ViewHolder> {
+public class RecyclerViewAdapterPopular extends RecyclerView.Adapter<RecyclerViewAdapterPopular.ViewHolder> {
+    ArrayList<PopularItem> listData;
 
-    ArrayList<RecommendationItem> listData;
-
-    public void setListData(ArrayList<RecommendationItem> listData) {
+    public void setListData(ArrayList<PopularItem> listData) {
         this.listData = listData;
         notifyDataSetChanged();
     }
@@ -27,18 +25,16 @@ public class RecyclerViewAdapter_Recommendation extends RecyclerView.Adapter<Rec
         private ImageView imageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.img_rc);
+            imageView = itemView.findViewById(R.id.img_pp);
         }
-
-        public void onBind(RecommendationItem recommendationItem){
-            imageView.setImageBitmap(recommendationItem.getBitmap());
+        public void onBind(PopularItem popularItem){
+            imageView.setImageBitmap(popularItem.getBitmap());
         }
     }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_rc, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_pp, parent, false);
         return new ViewHolder(view);
     }
 

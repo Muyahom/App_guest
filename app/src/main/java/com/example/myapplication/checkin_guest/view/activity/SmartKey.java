@@ -19,8 +19,7 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.MifareUltralight;
 import android.nfc.tech.Ndef;
-import android.nfc.tech.NfcA;
-import android.nfc.tech.NfcF;
+
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -63,6 +62,7 @@ public class SmartKey extends AppCompatActivity {
     private Context context;
     private ActivitySmartKeyBinding activitySmartKeyBinding;
     private Intent intent;
+
     private Thread vibeThread;
 
     @Override
@@ -184,7 +184,7 @@ public class SmartKey extends AppCompatActivity {
 
         //자연스러운 배경전환
         @SuppressLint("ResourceAsColor") ColorDrawable[] colorDrawables = {new ColorDrawable(R.color.remote_color), new ColorDrawable(Color.BLACK)};
-        activitySmartKeyBinding.constraintLayout.setBackground(null);
+        activitySmartKeyBinding.motionLayout.setBackground(null);
         TransitionDrawable transitionDrawable = new TransitionDrawable(colorDrawables);
         activitySmartKeyBinding.motionLayout.setBackground(transitionDrawable);
         transitionDrawable.startTransition(1000);
@@ -215,7 +215,7 @@ public class SmartKey extends AppCompatActivity {
         activitySmartKeyBinding.linearLodgingInfo.setVisibility(View.VISIBLE);
         activitySmartKeyBinding.txtTitle.setVisibility(View.VISIBLE);
         activitySmartKeyBinding.motionLayout.setBackground(getDrawable(R.color.white));
-        activitySmartKeyBinding.constraintLayout.setBackground(getDrawable(R.drawable.gradient_main_logo));
+        activitySmartKeyBinding.motionLayout.setBackground(getDrawable(R.drawable.gradient_main_logo));
         vibeOff();
     }
 
@@ -320,6 +320,7 @@ public class SmartKey extends AppCompatActivity {
 
             }
         }
+
     }
 
     private void vibeOn() {

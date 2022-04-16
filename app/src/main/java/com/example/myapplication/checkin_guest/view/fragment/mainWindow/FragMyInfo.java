@@ -20,6 +20,7 @@ import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragMyInfoBinding;
 import com.example.myapplication.checkin_guest.view.activity.LoginActivity;
 import com.example.myapplication.checkin_guest.view.activity.MainActivity;
+import com.example.myapplication.checkin_guest.view.activity.SmartCard;
 import com.example.myapplication.checkin_guest.view.activity.SmartKey;
 import com.example.myapplication.checkin_guest.viewModel.MainViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -27,7 +28,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Frag_myInfo extends Fragment {
+public class FragMyInfo extends Fragment {
     private FragMyInfoBinding fragMyInfoBinding = null;
     private Dialog dialog;
     private GoogleSignInClient mGoogleSignInClient;
@@ -52,7 +53,7 @@ public class Frag_myInfo extends Fragment {
         }
 
         fragMyInfoBinding.txtReservation.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), SmartKey.class);
+            Intent intent = new Intent(getActivity(), SmartCard.class);
             startActivity(intent);
         });
         fragMyInfoBinding.txtLogout.setOnClickListener(view -> {

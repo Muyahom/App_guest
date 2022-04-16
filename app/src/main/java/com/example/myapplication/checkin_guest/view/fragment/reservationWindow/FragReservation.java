@@ -16,9 +16,6 @@ import androidx.fragment.app.Fragment;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragReservationBinding;
 import com.example.myapplication.checkin_guest.view.activity.PayActivity;
-import com.example.myapplication.checkin_guest.view.activity.ReservationActivity;
-import com.example.myapplication.checkin_guest.view.activity.SearchActivity;
-import com.example.myapplication.checkin_guest.view.fragment.searchWindow.Frag_searchWindow2;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
@@ -35,7 +32,7 @@ import org.threeten.bp.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 
-public class Frag_reservation extends Fragment {
+public class FragReservation extends Fragment {
 
     private final String TAG = "Frag_searchWindow2";
     private FragReservationBinding FR_Binding= null;
@@ -91,7 +88,7 @@ public class Frag_reservation extends Fragment {
         });
 
         // 일자 선택 시 내가 정의한 드로어블이 적용되도록 한다
-        FR_Binding.materialCalendar.addDecorators(new Frag_reservation.DayDecorator(getContext()));
+        FR_Binding.materialCalendar.addDecorators(new FragReservation.DayDecorator(getContext()));
 
         // 좌우 화살표 가운데의 연/월이 보이는 방식 커스텀
         FR_Binding.materialCalendar.setTitleFormatter(new TitleFormatter() {

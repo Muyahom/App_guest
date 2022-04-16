@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.checkin_guest.R;
-import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapter_sm;
+import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapterSm;
 import com.example.myapplication.checkin_guest.databinding.FragSearchWindow1Binding;
 import com.example.myapplication.checkin_guest.model.City;
 import com.example.myapplication.checkin_guest.view.activity.SearchActivity;
@@ -34,7 +34,7 @@ public class Frag_searchWindow1 extends Fragment {
 
     //지역명 배열
     private ArrayList<String> cityList;
-    private RecyclerViewAdapter_sm recyclerViewAdapter_sm;
+    private RecyclerViewAdapterSm recyclerViewAdapter_sm;
 
 
     @Override
@@ -108,7 +108,7 @@ public class Frag_searchWindow1 extends Fragment {
         //디자인 문제로 인한 fragment 로딩시 바로 searchView 활성화
         fragSearchWindow1Binding.searchView.setIconified(false);
         fragSearchWindow1Binding.recyclerviewSm.setLayoutManager((new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false)));
-        recyclerViewAdapter_sm = new RecyclerViewAdapter_sm();
+        recyclerViewAdapter_sm = new RecyclerViewAdapterSm();
         fragSearchWindow1Binding.recyclerviewSm.setAdapter(recyclerViewAdapter_sm);
         //검색 기능 관련 처리
         cityList = new ArrayList<String>();
