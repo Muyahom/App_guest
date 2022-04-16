@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.alarmWindow.Frag_alarm1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="계정 활동 및 정책"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/notosans_m"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="예약과 계정활동을 확인 및 체크인 주요 정책의 내용을 알아보세요"
+                android:textSize="13dp"
+                android:fontFamily="@font/notosans_m"
+                />
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="계정활동"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/notosans_m"
+                    android:textSize="18dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="수정"
+                    android:fontFamily="@font/notosans_m"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:id="@+id/alarm_2_1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="게스트 정책"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/notosans_m"
+                    android:textSize="18dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="수정"
+                    android:fontFamily="@font/notosans_m"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:id="@+id/alarm_2_2"/>
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/line2"
+                android:layout_marginTop="50dp"/>
+
+
+            <!--메시지-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="호스트가 보내는 메시지"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:fontFamily="@font/notosans_m"
+                android:layout_marginTop="50dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="여행 전이나 여행 도중에 호스트와 연락하세요"
+                android:textSize="13dp"
+                android:fontFamily="@font/notosans_m"
+                />
+
+            <LinearLayout
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="메시지"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/notosans_m"
+                    android:textSize="18dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="수정"
+                    android:fontFamily="@font/notosans_m"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:id="@+id/alarm_2_3"/>
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+</layout>
