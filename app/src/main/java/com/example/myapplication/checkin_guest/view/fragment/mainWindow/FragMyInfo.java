@@ -18,6 +18,9 @@ import android.view.WindowManager;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragMyInfoBinding;
+import com.example.myapplication.checkin_guest.view.activity.AccountActivity;
+import com.example.myapplication.checkin_guest.view.activity.AlarmActivity;
+import com.example.myapplication.checkin_guest.view.activity.HelpActivity;
 import com.example.myapplication.checkin_guest.view.activity.LoginActivity;
 import com.example.myapplication.checkin_guest.view.activity.MainActivity;
 import com.example.myapplication.checkin_guest.view.activity.SmartCard;
@@ -64,6 +67,32 @@ public class FragMyInfo extends Fragment {
             Intent intent = new Intent(getActivity(), LoginActivity.class);
             startActivity(intent);
         });
+
+        //계정관리정보
+        fragMyInfoBinding.txtAccountManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AccountActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fragMyInfoBinding.txtAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AlarmActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        fragMyInfoBinding.txtHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HelpActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return fragMyInfoBinding.getRoot();
     }
