@@ -4,11 +4,21 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
+import androidx.annotation.Nullable;
 import androidx.core.view.WindowInsetsControllerCompat;
+
+import com.airbnb.lottie.LottieAnimationView;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 public class Util {
 
@@ -73,6 +83,29 @@ public class Util {
     // 터치 재활성화
     public static void setTouchOn(Activity activity) {
         activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    // 키보드 내리기
+    public static void keyboardOff(Activity activity){
+        InputMethodManager manager = (InputMethodManager)activity.getSystemService(activity.INPUT_METHOD_SERVICE);
+        manager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    public static RequestListener<Drawable> imageLoadingListener(final LottieAnimationView pendingImage) {
+        return new RequestListener<Drawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                //hide the animation
+                pendingImage.pauseAnimation();
+                pendingImage.setVisibility(View.GONE);
+                return false;//let Glide handle everything else
+            }
+        };
     }
 
 }

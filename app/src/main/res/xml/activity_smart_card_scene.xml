@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/txt_title" />
+        <Constraint
+            android:id="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="317dp"
+            android:layout_height="194dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.3"
+            app:layout_constraintTop_toBottomOf="@+id/linear_lodgingInfo"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/linear_lodgingInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.043"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/txt_title"
+            android:visibility="invisible" />
+        <Constraint
+            android:id="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="370dp"
+            android:layout_height="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.073"
+            app:layout_constraintTop_toBottomOf="@+id/linear_lodgingInfo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:rotation="90"
+            app:layout_constraintHorizontal_bias="0.609" />
+        <Constraint
+            android:id="@+id/linear_lodgingInfo"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start"
+        app:duration="500">
+        <OnClick app:targetId="@+id/switchBtn" />
+    </Transition>
+</MotionScene>

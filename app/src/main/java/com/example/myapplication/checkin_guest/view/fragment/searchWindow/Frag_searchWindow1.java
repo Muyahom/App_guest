@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.myapplication.checkin_guest.R;
-import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapter_sm;
+import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapterSm;
+import com.example.myapplication.checkin_guest.callback.RecommendSearchWordClickListener;
 import com.example.myapplication.checkin_guest.databinding.FragSearchWindow1Binding;
 import com.example.myapplication.checkin_guest.model.City;
 import com.example.myapplication.checkin_guest.view.activity.SearchActivity;
@@ -34,7 +36,7 @@ public class Frag_searchWindow1 extends Fragment {
 
     //지역명 배열
     private ArrayList<String> cityList;
-    private RecyclerViewAdapter_sm recyclerViewAdapter_sm;
+    private RecyclerViewAdapterSm recyclerViewAdapter_sm;
 
 
     @Override
@@ -42,7 +44,8 @@ public class Frag_searchWindow1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragSearchWindow1Binding = DataBindingUtil.inflate(inflater, R.layout.frag_search_window1, container, false);
-
+        //앱 최초 실행시 추천 검색어 창을 비활성화
+        fragSearchWindow1Binding.nestedScrollView.setVisibility(View.INVISIBLE);
 
         init();
 
@@ -78,7 +81,7 @@ public class Frag_searchWindow1 extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // 검색 버튼 누를 때 호출
-                // 임시 fragment 이동 호출
+                ((SearchActivity) getActivity()).setSearchWord(query);
                 ((SearchActivity) getActivity()).move_frag(1);
                 return true;
             }
@@ -89,7 +92,11 @@ public class Frag_searchWindow1 extends Fragment {
                 Log.d(TAG, "입력 글자 : " + newText);
                 if (!newText.equals("")) {
                     search(newText);
+                    fragSearchWindow1Binding.nestedScrollView.setVisibility(View.VISIBLE);
+                    fragSearchWindow1Binding.recentSearch.setVisibility(View.INVISIBLE);
                 }else{
+                    fragSearchWindow1Binding.nestedScrollView.setVisibility(View.INVISIBLE);
+                    fragSearchWindow1Binding.recentSearch.setVisibility(View.VISIBLE);
                     recyclerViewAdapter_sm.clearMList();
                 }
                 return true;
@@ -102,9 +109,12 @@ public class Frag_searchWindow1 extends Fragment {
     private void init() {
         //디자인 문제로 인한 fragment 로딩시 바로 searchView 활성화
         fragSearchWindow1Binding.searchView.setIconified(false);
+
         fragSearchWindow1Binding.recyclerviewSm.setLayoutManager((new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false)));
-        recyclerViewAdapter_sm = new RecyclerViewAdapter_sm();
+        recyclerViewAdapter_sm = new RecyclerViewAdapterSm();
+        recyclerViewAdapter_sm.setmClickListener(getRecommentSearchWordClickListener());
         fragSearchWindow1Binding.recyclerviewSm.setAdapter(recyclerViewAdapter_sm);
+
         //검색 기능 관련 처리
         cityList = new ArrayList<String>();
         cityMap = new HashMap<>();
@@ -126,5 +136,23 @@ public class Frag_searchWindow1 extends Fragment {
         }
         Log.d(TAG, "연관 검색어 : " + city_list.toString());
         recyclerViewAdapter_sm.setmList(city_list);
+    }
+
+    private RecommendSearchWordClickListener getRecommentSearchWordClickListener(){
+        return query -> settingSearchWord(query);
+    }
+
+    private boolean settingSearchWord(String searchWord){
+        boolean check = false;
+        if(searchWord.equals("")) {
+            Toast.makeText(getContext(), "검색어를 입력해주세요", Toast.LENGTH_SHORT).show();
+
+        }else{
+            //SearchActivity로 데이터 보냄
+            ((SearchActivity)getActivity()).setSearchWord(searchWord);
+            check = true;
+        }
+
+        return check;
     }
 }

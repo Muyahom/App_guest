@@ -12,6 +12,8 @@
     <string name="search_ment3">숙소 유형</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="service_name">smartcard</string>
+    <string name="aiddescription">card_aid</string>
     <!--달력     -->
     <string-array name="custom_weekdays">
         <item>일</item>

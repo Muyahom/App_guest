@@ -36,6 +36,7 @@ import java.util.List;
 public class Frag_searchWindow2 extends Fragment {
     private final String TAG = "Frag_searchWindow2";
     private FragSearchWindow2Binding fragSearchWindow2Binding = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,17 +105,20 @@ public class Frag_searchWindow2 extends Fragment {
             }
         });
 
-        fragSearchWindow2Binding.btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((SearchActivity)getActivity()).move_frag(2);
-            }
+        fragSearchWindow2Binding.btnNext.setOnClickListener(view -> {
+            ((SearchActivity) getActivity()).setIsPeriodCheck(true);
+            ((SearchActivity) getActivity()).move_frag(2);
+        });
+
+        fragSearchWindow2Binding.btnSkip.setOnClickListener(view -> {
+            ((SearchActivity) getActivity()).setIsPeriodCheck(false);
+            ((SearchActivity) getActivity()).move_frag(2);
         });
 
         return fragSearchWindow2Binding.getRoot();
     }
 
-    private void setDateText(String clickYear, String clickMonth, String clickDate){
+    private void setDateText(String clickYear, String clickMonth, String clickDate) {
         fragSearchWindow2Binding.txtStartYear.setText(clickYear);
         fragSearchWindow2Binding.txtStartMonth.setText(clickMonth);
         fragSearchWindow2Binding.txtStartDate.setText(clickDate);
@@ -123,7 +127,7 @@ public class Frag_searchWindow2 extends Fragment {
         fragSearchWindow2Binding.txtEndDate.setText("");
     }
 
-    private void setPeriod(String startYear, String startMonth, String startDate, String endYear, String endMonth, String endDate){
+    private void setPeriod(String startYear, String startMonth, String startDate, String endYear, String endMonth, String endDate) {
         fragSearchWindow2Binding.txtStartYear.setText(startYear);
         fragSearchWindow2Binding.txtStartMonth.setText(startMonth);
         fragSearchWindow2Binding.txtStartDate.setText(startDate);

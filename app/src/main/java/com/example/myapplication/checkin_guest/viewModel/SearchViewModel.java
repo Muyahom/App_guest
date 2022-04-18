@@ -8,7 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.myapplication.checkin_guest.callback.RTListener;
-import com.example.myapplication.checkin_guest.model.RTDatabase;
+import com.example.myapplication.checkin_guest.viewModel.Executor.RealTimeDatabaseExcutor;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class SearchViewModel extends ViewModel {
     private WeakReference<Activity> mActivity;
 
     //RealTimeDataBase 처리 관련 변수
-    private RTDatabase rtDatabase = new RTDatabase();
+    private RealTimeDatabaseExcutor realTimeDatabaseExcutor = new RealTimeDatabaseExcutor();
 
     //city_list
     private MutableLiveData<ArrayList<String>> city_list = new MutableLiveData<>();
@@ -31,7 +31,7 @@ public class SearchViewModel extends ViewModel {
     //activity setting
     public void setParentContext(Activity parentContext) {
         mActivity = new WeakReference<>(parentContext);
-        rtDatabase.setRtListener(getRTListener());
+        realTimeDatabaseExcutor.setRtListener(getRTListener());
     }
 
     private void finishActivity() {
@@ -58,6 +58,6 @@ public class SearchViewModel extends ViewModel {
 
     public void onRequestGetCityList() {
         Log.d(TAG, "onRequestgetCityList");
-        rtDatabase.getCityList();
+        realTimeDatabaseExcutor.getCityList();
     }
 }

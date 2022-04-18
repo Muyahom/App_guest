@@ -23,13 +23,12 @@ public class LoginViewModel extends ViewModel {
     private WeakReference<Activity> mActivityRef;
 
     //firebase 로그인 처리를 위한 변수
-    // LiveData
+    //LiveData
     private GoogleLoginExecutor mGoogleLoginExecutor;
     private static final int RC_SIGN_IN = 9001;
 
     //이메일 로그인 처리를 위한 변수
     private EmailLoginExcutor mEmailLoginExcutor;
-
 
     public LoginViewModel(){
         Logger.addLogAdapter(new AndroidLogAdapter());
@@ -59,12 +58,7 @@ public class LoginViewModel extends ViewModel {
     }
 
     public ErrorListener getErrorListener(){
-        return new ErrorListener() {
-            @Override
-            public void NotifySignInEmailError() {
-                Toast.makeText(mActivityRef.get(), "이메일, 비밀번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show();
-            }
-        };
+        return () -> Toast.makeText(mActivityRef.get(), "이메일, 비밀번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show();
     }
 
     private void finishActivity() {

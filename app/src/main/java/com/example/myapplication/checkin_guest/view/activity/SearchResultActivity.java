@@ -1,21 +1,15 @@
 package com.example.myapplication.checkin_guest.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.widget.ImageView;
 
 import com.example.myapplication.checkin_guest.R;
-import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapter_searchResult;
+import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapterSearchResult;
 import com.example.myapplication.checkin_guest.databinding.ActivitySearchResultBinding;
 import com.example.myapplication.checkin_guest.model.LodgingItem;
 import com.example.myapplication.checkin_guest.util.Util;
@@ -28,7 +22,7 @@ public class SearchResultActivity extends AppCompatActivity {
     private ActivitySearchResultBinding activitySearchResultBinding;
     private BottomSheetBehavior bottomSheetBehavior;
     private Util util;
-    private RecyclerViewAdapter_searchResult recyclerViewAdapter_searchResult;
+    private RecyclerViewAdapterSearchResult recyclerViewAdapter_searchResult;
     private ArrayList<LodgingItem> list_lodging;
 
     @Override
@@ -52,7 +46,7 @@ public class SearchResultActivity extends AppCompatActivity {
     public void init(){
         bottomSheetBehavior = BottomSheetBehavior.from((View) activitySearchResultBinding.bottomSheet);
         activitySearchResultBinding.recyclerviewSr.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        recyclerViewAdapter_searchResult = new RecyclerViewAdapter_searchResult();
+        recyclerViewAdapter_searchResult = new RecyclerViewAdapterSearchResult();
         list_lodging = new ArrayList<LodgingItem>();
     }
     // 실험을 위해 작성 삭제 예정

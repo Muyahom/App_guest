@@ -79,7 +79,7 @@ public class Frag_select extends Fragment {
         viewPagerAdapterSelect.setListData(list);
         fragSelectBinding.viewPagerSelectFrag.setAdapter(viewPagerAdapterSelect);
         //뷰페이저에 인디케이터추가
-        fragSelectBinding.dotsIndicator.setViewPager2(fragSelectBinding.viewPagerSelectFrag);
+        //fragSelectBinding.dotsIndicator.setViewPager2(fragSelectBinding.viewPagerSelectFrag);
 
     }
     //예약 페이지 이동함수

@@ -12,6 +12,7 @@ dependencyResolutionManagement {
         google()
         maven {url 'https://jitpack.io'}
         maven {url 'https://naver.jfrog.io/artifactory/maven/'}
+        maven {url 'https://jitpack.io'}
         jcenter()
         mavenCentral()
     }
