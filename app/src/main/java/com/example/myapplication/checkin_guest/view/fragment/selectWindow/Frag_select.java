@@ -28,8 +28,6 @@ public class Frag_select extends Fragment {
     private FragSelectBinding fragSelectBinding = null;
     private ViewPagerAdapterSelect viewPagerAdapterSelect;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +47,9 @@ public class Frag_select extends Fragment {
             }
         });
 
-
-
         init();
         insertTemp();
         return fragSelectBinding.getRoot();
-
-
 
     }
     private void init(){

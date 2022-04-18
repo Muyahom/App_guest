@@ -30,6 +30,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private String searchWord;
     private boolean isPeriodCheck;
+    private boolean isConditionSet;
     private long startP;
     private long endP;
 
@@ -85,6 +86,14 @@ public class SearchActivity extends AppCompatActivity {
         Log.d(TAG, "시작 : " + startP + " 끝 : " + endP);
         this.startP = startP;
         this.endP = endP;
+    }
+
+    public void setConditionSet(boolean isConditionSet){
+        this.isConditionSet = isConditionSet;
+    }
+
+    public void setCondition(){
+
     }
 
     public void setIsPeriodCheck(boolean check){

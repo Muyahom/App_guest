@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.ActivitySmartCardBinding;
 import com.example.myapplication.checkin_guest.util.CardService;
@@ -38,6 +39,7 @@ public class SmartCard extends AppCompatActivity {
     public void onBackPressed() {
         // 기존 뒤로가기 버튼의 기능을 막기위해 주석처리 또는 삭제
         // super.onBackPressed();
+
         if (writeMode) {
             activitySmartCardBinding.switchBtn.setChecked(false);
         } else if (System.currentTimeMillis() > backKeyPressedTime + 2000) {

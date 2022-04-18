@@ -95,6 +95,7 @@
                     android:orientation="vertical">
 
                     <RadioGroup
+                        android:id="@+id/rgb"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -173,12 +174,14 @@
                         android:layout_weight="1" />
 
                     <ImageButton
+                        android:id="@+id/btn_minus_bad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:src="@drawable/plus" />
+                        android:src="@drawable/minus" />
 
                     <TextView
+                        android:id="@+id/txt_badCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -187,10 +190,11 @@
                         android:textColor="@color/black" />
 
                     <ImageButton
+                        android:id="@+id/btn_plus_bad"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:src="@drawable/minus" />
+                        android:src="@drawable/plus" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -200,6 +204,7 @@
                     android:layout_marginBottom="10dp">
 
                     <TextView
+                        android:id="@+id/txt_badroomCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosans_regular"
@@ -212,10 +217,11 @@
                         android:layout_weight="1" />
 
                     <ImageButton
+                        android:id="@+id/btn_minus_badroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:src="@drawable/plus" />
+                        android:src="@drawable/minus" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -226,10 +232,11 @@
                         android:textColor="@color/black" />
 
                     <ImageButton
+                        android:id="@+id/btn_plus_badroom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:src="@drawable/minus" />
+                        android:src="@drawable/plus"  />
                 </LinearLayout>
 
                 <LinearLayout
@@ -250,12 +257,14 @@
                         android:layout_weight="1" />
 
                     <ImageButton
+                        android:id="@+id/btn_minus_toilet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:src="@drawable/plus" />
+                        android:src="@drawable/minus" />
 
                     <TextView
+                        android:id="@+id/txt_toiletCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -264,15 +273,17 @@
                         android:textColor="@color/black" />
 
                     <ImageButton
+                        android:id="@+id/btn_plus_toilet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:src="@drawable/minus" />
+                        android:src="@drawable/plus" />
                 </LinearLayout>
 
             </LinearLayout>
 
             <Button
+                android:id="@+id/btn_skip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
