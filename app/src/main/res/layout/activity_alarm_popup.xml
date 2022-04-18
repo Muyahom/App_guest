@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".view.activity.AlarmActivity"
+        android:layout_margin="30dp">
+
+        <TextView
+            android:id="@+id/alarm_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="여행 아이디어 및 특가"
+            android:fontFamily="@font/notosans"/>
+
+
+        <Switch
+            android:id="@+id/alarm_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="이메일" />
+
+        <Switch
+            android:id="@+id/alarm_push"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="푸시 알림" />
+
+        <Switch
+            android:id="@+id/alarm_massage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="메시지" />
+
+    </LinearLayout>
+
+</layout>

@@ -61,6 +61,21 @@
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/menu/search_menu.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/xml/apduservice.xml" value="0.2742520398912058" />
+        <entry key="app/src/main/res/drawable/border_edittext.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/email_login_button_setting.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/radius_pay.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_account.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_alarm.xml" value="0.10625" />
+        <entry key="app/src/main/res/layout/activity_alarm_popup.xml" value="0.1480978260869565" />
+        <entry key="app/src/main/res/layout/activity_help.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_pay.xml" value="0.1308876811594203" />
+        <entry key="app/src/main/res/layout/activity_reservation.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/frag_chatting.xml" value="0.11854103343465046" />
+        <entry key="app/src/main/res/layout/frag_my_info.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/frag_reservation.xml" value="0.11854103343465046" />
+        <entry key="app/src/main/res/layout/frag_select.xml" value="0.8709677419354839" />
+        <entry key="app/src/main/res/layout/fragment_frag_alarm1.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_frag_alarm2.xml" value="0.1" />
       </map>
     </option>
   </component>
