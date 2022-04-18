@@ -30,6 +30,8 @@ public class SearchActivity extends AppCompatActivity {
 
     private String searchWord;
     private boolean isPeriodCheck;
+    private long startP;
+    private long endP;
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
@@ -77,6 +79,12 @@ public class SearchActivity extends AppCompatActivity {
     public void setSearchWord(String searchWord){
         Log.d(TAG, "검색어 : " + searchWord);
         this.searchWord = searchWord;
+    }
+
+    public void setPeriod(long startP, long endP){
+        Log.d(TAG, "시작 : " + startP + " 끝 : " + endP);
+        this.startP = startP;
+        this.endP = endP;
     }
 
     public void setIsPeriodCheck(boolean check){

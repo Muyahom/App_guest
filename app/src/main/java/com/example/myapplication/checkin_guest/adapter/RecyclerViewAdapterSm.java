@@ -33,6 +33,7 @@ public class RecyclerViewAdapterSm extends RecyclerView.Adapter<RecyclerViewAdap
         this.mList.clear();
         notifyDataSetChanged();
     }
+
     class ViewHolder extends RecyclerView.ViewHolder{
         private ImageView imageView;
         private TextView textView;

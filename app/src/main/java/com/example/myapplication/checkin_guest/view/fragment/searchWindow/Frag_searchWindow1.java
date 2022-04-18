@@ -82,7 +82,6 @@ public class Frag_searchWindow1 extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 // 검색 버튼 누를 때 호출
                 ((SearchActivity) getActivity()).setSearchWord(query);
-                ((SearchActivity) getActivity()).move_frag(1);
                 return true;
             }
 
@@ -149,8 +148,9 @@ public class Frag_searchWindow1 extends Fragment {
 
         }else{
             //SearchActivity로 데이터 보냄
-            ((SearchActivity)getActivity()).setSearchWord(searchWord);
             check = true;
+            ((SearchActivity)getActivity()).setSearchWord(searchWord);
+            ((SearchActivity) getActivity()).move_frag(1);
         }
 
         return check;

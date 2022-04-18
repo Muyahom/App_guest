@@ -1,5 +1,6 @@
 package com.example.myapplication.checkin_guest.view.fragment.searchWindow;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragSearchWindow2Binding;
@@ -30,12 +32,20 @@ import com.prolificinteractive.materialcalendarview.format.TitleFormatter;
 import org.threeten.bp.DayOfWeek;
 import org.threeten.bp.LocalDate;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Frag_searchWindow2 extends Fragment {
     private final String TAG = "Frag_searchWindow2";
     private FragSearchWindow2Binding fragSearchWindow2Binding = null;
+
+    private boolean isPeriodSet;
+
+    private long startP;
+    private long endP;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -68,6 +78,7 @@ public class Frag_searchWindow2 extends Fragment {
                 String clickMonth = String.valueOf(date.getMonth());
                 String clickDate = String.valueOf(date.getDay());
                 setDateText(clickYear, clickMonth, clickDate);
+                isPeriodSet = false;
             }
         });
         fragSearchWindow2Binding.materialCalendar.setOnRangeSelectedListener(new OnRangeSelectedListener() {
@@ -82,6 +93,17 @@ public class Frag_searchWindow2 extends Fragment {
                 String endMonth = String.valueOf(dates.get(dates.size() - 1).getDate().getMonthValue());
                 String endDate = String.valueOf(dates.get(dates.size() - 1).getDate().getDayOfMonth());
                 setPeriod(startYear, startMonth, startDate, endYear, endMonth, endDate);
+
+                isPeriodSet = true;
+
+                String start = getDateFormat(startYear, startMonth, startDate);
+                String end = getDateFormat(endYear, endMonth, endDate);
+                try {
+                    startP = stringTolong(start);
+                    endP = stringTolong(end);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -106,8 +128,13 @@ public class Frag_searchWindow2 extends Fragment {
         });
 
         fragSearchWindow2Binding.btnNext.setOnClickListener(view -> {
-            ((SearchActivity) getActivity()).setIsPeriodCheck(true);
-            ((SearchActivity) getActivity()).move_frag(2);
+            if(isPeriodSet){
+                ((SearchActivity) getActivity()).setIsPeriodCheck(true);
+                ((SearchActivity) getActivity()).setPeriod(this.startP, this.endP);
+                ((SearchActivity) getActivity()).move_frag(2);
+            }else{
+                Toast.makeText(getActivity(), "머무실 기간을 선택해 주세요", Toast.LENGTH_SHORT).show();
+            }
         });
 
         fragSearchWindow2Binding.btnSkip.setOnClickListener(view -> {
@@ -159,5 +186,34 @@ public class Frag_searchWindow2 extends Fragment {
         }
     }
 
+    // String을 날짜 형태로 변환
+    private String getDateFormat(String year, String month, String date){
+        return year + "." + month + "." + date;
+    }
+
+    // 날짜 형식 변환 string ->  date -> long
+    private long stringTolong(String date) throws ParseException {
+        long translate_date = 0;
+
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat fDate = new SimpleDateFormat("yyyy.MM.dd");
+        Date n = fDate.parse(date);
+        translate_date = n.getTime();
+
+        return translate_date;
+    }
+
+    // 날짜 형식 변환 long -> date -> string
+    private String longToString(long date){
+        String translateDate=null;
+
+        date = date;
+
+        Date date1 = new Date(date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        translateDate = dateFormat.format(date1);
+
+        return translateDate;
+    }
 
 }
