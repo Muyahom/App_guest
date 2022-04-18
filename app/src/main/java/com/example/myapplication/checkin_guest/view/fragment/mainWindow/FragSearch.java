@@ -121,10 +121,13 @@ public class FragSearch extends Fragment {
         recyclerViewAdapter_recommendation = new RecyclerViewAdapterRecommendation();
         recyclerViewAdapter_popular = new RecyclerViewAdapterPopular();
         
-        fragSearchBinding.viewPagerBanner.setAdapter(viewPagerAdapterBanner);
-        
         //recyclerview 가로 지정
         list_banner = new ArrayList<>();
+        viewPagerAdapterBanner.setListData(list_banner);
+        Banner banner = new Banner();
+        list_banner.add(banner);
+        fragSearchBinding.viewPagerBanner.setAdapter(viewPagerAdapterBanner);
+
         fragSearchBinding.recyclerViewRc.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
         list_rc = new ArrayList<>();
         fragSearchBinding.recyclerViewPp.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false));
@@ -134,21 +137,6 @@ public class FragSearch extends Fragment {
     //app title 영역의 높이 반환
     private float getYMax() {
         return getResources().getDimension(R.dimen.height_CollapsingToolbarLayout);
-    }
-
-    // 상태바 글자 색상 변경
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    public void setStatusBarColor(Activity activity, int mode) {
-        Log.d(TAG, "change statusBar");
-        Window window = activity.getWindow();
-        WindowInsetsControllerCompat windowInsetsControllerCompat = new WindowInsetsControllerCompat(window, getView());
-        if (mode == 1) {
-            // 상태바 글자 색상 white
-            windowInsetsControllerCompat.setAppearanceLightStatusBars(false);
-        }else if (mode == 2){
-            // 상태바 글자 색상 black
-            windowInsetsControllerCompat.setAppearanceLightStatusBars(true);
-        }
     }
 
     /*서버로 부터 banner를 가져온다.*/

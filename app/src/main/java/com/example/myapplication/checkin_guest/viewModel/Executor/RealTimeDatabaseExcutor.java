@@ -1,6 +1,5 @@
-package com.example.myapplication.checkin_guest.model;
+package com.example.myapplication.checkin_guest.viewModel.Executor;
 
-import android.telecom.Connection;
 import android.util.Log;
 
 import com.example.myapplication.checkin_guest.callback.RTListener;
@@ -9,10 +8,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReference;
 
-public class RTDatabase {
-    private final String TAG = RTDatabase.class.getSimpleName();
+public class RealTimeDatabaseExcutor {
+    private final String TAG = RealTimeDatabaseExcutor.class.getSimpleName();
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private RTDatabaseAttribute rtDatabaseAttribute = RTDatabaseAttribute.getInstance();
     private ArrayList<String> city_result = null;
@@ -33,6 +31,5 @@ public class RTDatabase {
                 rtListener.notifyGetCitySuccess(city_result);
             }
         });
-
     }
 }

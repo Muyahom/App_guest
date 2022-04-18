@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.model.Banner;
 import com.example.myapplication.checkin_guest.model.ViewPageDataBanner;
@@ -48,6 +49,8 @@ public class ViewPagerAdapterBanner extends RecyclerView.Adapter<ViewPagerAdapte
             Log.d(TAG, "onBind");
             Glide.with(context)
                     .load(banner.getImg_url())
+                    .skipMemoryCache(true)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .addListener(Util.imageLoadingListener(lottieAnimationView))
                     .into(imageView);
 

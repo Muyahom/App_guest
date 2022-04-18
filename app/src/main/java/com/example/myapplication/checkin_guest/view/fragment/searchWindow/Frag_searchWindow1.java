@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.adapter.RecyclerViewAdapterSm;
+import com.example.myapplication.checkin_guest.callback.RecommendSearchWordClickListener;
 import com.example.myapplication.checkin_guest.databinding.FragSearchWindow1Binding;
 import com.example.myapplication.checkin_guest.model.City;
 import com.example.myapplication.checkin_guest.view.activity.SearchActivity;
@@ -79,7 +81,7 @@ public class Frag_searchWindow1 extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 // 검색 버튼 누를 때 호출
-                // 임시 fragment 이동 호출
+                ((SearchActivity) getActivity()).setSearchWord(query);
                 ((SearchActivity) getActivity()).move_frag(1);
                 return true;
             }
@@ -107,9 +109,12 @@ public class Frag_searchWindow1 extends Fragment {
     private void init() {
         //디자인 문제로 인한 fragment 로딩시 바로 searchView 활성화
         fragSearchWindow1Binding.searchView.setIconified(false);
+
         fragSearchWindow1Binding.recyclerviewSm.setLayoutManager((new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false)));
         recyclerViewAdapter_sm = new RecyclerViewAdapterSm();
+        recyclerViewAdapter_sm.setmClickListener(getRecommentSearchWordClickListener());
         fragSearchWindow1Binding.recyclerviewSm.setAdapter(recyclerViewAdapter_sm);
+
         //검색 기능 관련 처리
         cityList = new ArrayList<String>();
         cityMap = new HashMap<>();
@@ -131,5 +136,23 @@ public class Frag_searchWindow1 extends Fragment {
         }
         Log.d(TAG, "연관 검색어 : " + city_list.toString());
         recyclerViewAdapter_sm.setmList(city_list);
+    }
+
+    private RecommendSearchWordClickListener getRecommentSearchWordClickListener(){
+        return query -> settingSearchWord(query);
+    }
+
+    private boolean settingSearchWord(String searchWord){
+        boolean check = false;
+        if(searchWord.equals("")) {
+            Toast.makeText(getContext(), "검색어를 입력해주세요", Toast.LENGTH_SHORT).show();
+
+        }else{
+            //SearchActivity로 데이터 보냄
+            ((SearchActivity)getActivity()).setSearchWord(searchWord);
+            check = true;
+        }
+
+        return check;
     }
 }

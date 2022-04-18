@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.ActivitySearchBinding;
@@ -25,7 +26,11 @@ public class SearchActivity extends AppCompatActivity {
     private final String TAG = "SearchActivity";
     private ActivitySearchBinding activitySearchBinding;
     private SearchViewModel searchViewModel;
-    Fragment frag_searchWindow1, frag_searchWindow2, frag_searchWindow3;
+    private Fragment frag_searchWindow1, frag_searchWindow2, frag_searchWindow3;
+
+    private String searchWord;
+    private boolean isPeriodCheck;
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,5 +72,14 @@ public class SearchActivity extends AppCompatActivity {
                 break;
             case 3:
         }
+    }
+
+    public void setSearchWord(String searchWord){
+        Log.d(TAG, "검색어 : " + searchWord);
+        this.searchWord = searchWord;
+    }
+
+    public void setIsPeriodCheck(boolean check){
+        this.isPeriodCheck = check;
     }
 }
