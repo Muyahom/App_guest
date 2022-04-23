@@ -18,6 +18,7 @@ import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.adapter.ViewPagerAdapterSelect;
 import com.example.myapplication.checkin_guest.databinding.FragSelectBinding;
 import com.example.myapplication.checkin_guest.model.ViewPageDataSelect;
+import com.example.myapplication.checkin_guest.util.Util;
 import com.example.myapplication.checkin_guest.view.activity.ReservationActivity;
 
 import java.util.ArrayList;
@@ -81,6 +82,8 @@ public class Frag_select extends Fragment {
         Intent intent = new Intent(getActivity(), ReservationActivity.class);
         startActivity(intent);
     }
+
+
 
 
 }
