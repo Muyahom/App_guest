@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.myapplication.checkin_guest.R;
@@ -54,9 +55,24 @@ public class MainActivity extends AppCompatActivity {
                 .AndroidViewModelFactory(getApplication())).get(MainViewModel.class);
         mainViewModel.setParentContext(this);
 
+        mainViewModel.getFirebaseToken();
+
         init();
+
+        mainViewModel.getIsSetUserInfo().observe(this, data->{
+            Log.d(TAG, "observe");
+            boolean isSetUserInfo = mainViewModel.getIsSetUserInfo().getValue();
+
+            if(isSetUserInfo){
+                mainViewModel.compareToken();
+            }else{
+
+            }
+        });
+
+        mainViewModel.setGetPushTokenListener();
+
         searchScreenSetting();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_view, frag_search).commit();
         activityMainBinding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.navigation_main:
@@ -77,13 +93,14 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         });
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         Logger.d(TAG, "자동로그인 기능 실행");
-        // google 및 email 로그인 여부 확인
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_view, frag_search).commit();
     }
 
     private void init() {

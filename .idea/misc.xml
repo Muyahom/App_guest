@@ -25,6 +25,7 @@
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/square_background.xml" value="0.2125" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/transparent_calendar_element.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/font/notosans.xml" value="0.32535271483539974" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_account.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_login.xml" value="0.19444444444444445" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_pay.xml" value="0.1125" />
@@ -49,6 +50,7 @@
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_search_window1.xml" value="0.176" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_search_window2.xml" value="0.2" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_search_window3.xml" value="0.264" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_select.xml" value="0.10175511909736733" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/frag_term_of_use.xml" value="0.23097826086956522" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/fragment_bottom_sheet_search_result.xml" value="0.23802083333333332" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/fragment_frag_search.xml" value="0.36614583333333334" />
@@ -63,6 +65,7 @@
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/menu/search_menu.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1695" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1605" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/mipmap-anydpi-v26/icon_checkin.xml" value="0.1695" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/mipmap-anydpi-v26/icon_checkin_round.xml" value="0.1695" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/xml/apduservice.xml" value="0.2742520398912058" />

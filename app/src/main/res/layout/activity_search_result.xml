@@ -20,7 +20,7 @@
 
             <TextView
                 android:id="@+id/txt_region"
-                android:layout_width="200dp"
+                android:layout_width="208dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="10dp"
@@ -72,11 +72,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-            <com.naver.maps.map.MapView
-                android:id="@+id/map_view"
+            <fragment
+                android:id="@+id/map"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fillViewport="true" />
+                android:name="com.naver.maps.map.MapFragment" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_lottie"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#BDBCBC">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieView"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.146"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/circleload" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
             <!-- Bottom sheet -->
             <LinearLayout
@@ -99,10 +121,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/txt_search_result"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosans"
-                        android:text="50개의 검색 결과가 있습니다."
+                        android:text="개의 검색 결과가 있습니다."
                         android:textAlignment="center"
                         android:textSize="20sp" />
 

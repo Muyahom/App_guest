@@ -4,7 +4,8 @@ public class FireStorageAttribute {
     private final String TAG = FireStorageAttribute.class.getSimpleName();
     private static FireStorageAttribute instance;
     private final String STORAGE_ROUTE = "gs://moyahome-23245.appspot.com";
-    private final String DOC_ROUTE_LODGING = "banner/";
+    private final String DOC_ROUTE_LODGING = "lodging_img/";
+    private final String DOC_ROUTE_BANNER = "banner/";
 
     private FireStorageAttribute(){}
 
@@ -21,5 +22,9 @@ public class FireStorageAttribute {
 
     public String getDOC_ROUTE_LODGING() {
         return DOC_ROUTE_LODGING;
+    }
+
+    public String getDOC_ROUTE_BANNER() {
+        return DOC_ROUTE_BANNER;
     }
 }

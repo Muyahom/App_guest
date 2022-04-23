@@ -2,6 +2,7 @@ package com.example.myapplication.checkin_guest.util;
 
 import android.nfc.cardemulation.HostApduService;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.Arrays;
 
@@ -27,7 +28,9 @@ public class CardService extends HostApduService {
      * 독서자)
      */
     @Override
-    public void onDeactivated(int reason) { }
+    public void onDeactivated(int reason) {
+        Log.d(TAG, "onDeactivated : " + reason);
+    }
 
     /**
      * 이 메서드는 원격 장치에서 명령 APDU를 수신하면 호출된다.
@@ -51,9 +54,10 @@ public class CardService extends HostApduService {
 
     @Override
     public byte[] processCommandApdu(byte[] commandApdu, Bundle extras) {
-        String account = "1234";
+        Log.d(TAG, "processCommandApdu");
+        String account = "91759999";
         byte[] accountBytes = account.getBytes();
-        return ConcatArrays(accountBytes, SELECT_OK_SW);
+        return ConcatArrays(accountBytes, SELECT_OK_SW); //전달 데이터와 ok 신호를 보냄
 
     }
     // END_INCLUDE(processCommandApdu)

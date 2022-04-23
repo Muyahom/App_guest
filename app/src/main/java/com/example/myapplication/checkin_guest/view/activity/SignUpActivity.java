@@ -1,5 +1,7 @@
 package com.example.myapplication.checkin_guest.view.activity;
 
+import static java.lang.Thread.sleep;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
@@ -74,6 +76,16 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        signUpViewModel.getIsSuccess().observe(this, data->{
+            boolean isSuccess = signUpViewModel.getIsSuccess().getValue();
+            if(isSuccess){
+                activitySignUpBinding.lottie.setVisibility(View.VISIBLE);
+            }else{
+                activitySignUpBinding.lottie.setVisibility(View.INVISIBLE);
+
+            }
+        });
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_signUp, fragTermOfUse).commit();
     }
@@ -85,6 +97,7 @@ public class SignUpActivity extends AppCompatActivity {
         fragPhoneNumberCertification = new FragPhoneNumberCertification();
         btn_next = activitySignUpBinding.btnNext;
         activitySignUpBinding.linearProgress.setVisibility(View.INVISIBLE);
+        activitySignUpBinding.lottie.setVisibility(View.INVISIBLE);
     }
 
     public Button getBtn_next() {

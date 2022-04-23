@@ -40,9 +40,7 @@ public class SmartCard extends AppCompatActivity {
         // 기존 뒤로가기 버튼의 기능을 막기위해 주석처리 또는 삭제
         // super.onBackPressed();
 
-        if (writeMode) {
-            activitySmartCardBinding.switchBtn.setChecked(false);
-        } else if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
             backKeyPressedTime = System.currentTimeMillis();
             Toast.makeText(this, "\'뒤로\' 버튼을 한번 더 누르시면 스마트키가 종료됩니다.", Toast.LENGTH_SHORT).show();
             return;

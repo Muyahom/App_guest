@@ -1,27 +1,31 @@
 package com.example.myapplication.checkin_guest.model;
 
+import com.google.firebase.firestore.GeoPoint;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class LodgingItem {
+public class LodgingItem implements Serializable {
     private String uid; // 숙소 식별
-    private int acceptance;
+    private long acceptance;
     private String address;
     private String city;
-    private int cnt_bad;
-    private int cnt_badRoom;
-    private int cnt_toilet;
+    private long cnt_bad;
+    private long cnt_badRoom;
+    private long cnt_toilet;
     private ArrayList<String> convenience;
     private ArrayList<String> img_path;
-    private int fare; // 숙소 1박 가격
+    private long fare; // 숙소 1박 가격
     private String host_uid;
     private String introductory;
     private String name; // 숙소 이름
     private boolean nfc_distance; // 숙소 ncf 비밀번호 발급 숙소 여부
     private ArrayList<String> reservation_time_list;
-    private ArrayList<Review> review;
+    private ArrayList<String> review;
     private String state;
     private String title_image_path; // 숙소 타이틀 이미지
-    private int type;
+    private GeoPoint geoPoint;
+    private long type;
 
     public String getUid() {
         return uid;
@@ -39,11 +43,11 @@ public class LodgingItem {
         this.name = name;
     }
 
-    public int getFare() {
+    public long getFare() {
         return fare;
     }
 
-    public void setFare(int fare) {
+    public void setFare(long fare) {
         this.fare = fare;
     }
 
@@ -79,11 +83,11 @@ public class LodgingItem {
         this.convenience = convenience_item;
     }
 
-    public int getAcceptance() {
+    public long getAcceptance() {
         return acceptance;
     }
 
-    public void setAcceptance(int acceptance) {
+    public void setAcceptance(long acceptance) {
         this.acceptance = acceptance;
     }
 
@@ -103,19 +107,19 @@ public class LodgingItem {
         this.introductory = introductory;
     }
 
-    public ArrayList<Review> getReview() {
+    public ArrayList<String> getReview() {
         return review;
     }
 
-    public void setReview(ArrayList<Review> review) {
+    public void setReview(ArrayList<String> review) {
         this.review = review;
     }
 
-    public int getType() {
+    public long getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(long type) {
         this.type = type;
     }
 
@@ -151,27 +155,61 @@ public class LodgingItem {
         this.host_uid = host_uid;
     }
 
-    public int getCnt_bad() {
+    public long getCnt_bad() {
         return cnt_bad;
     }
 
-    public void setCnt_bad(int cnt_bad) {
+    public void setCnt_bad(long cnt_bad) {
         this.cnt_bad = cnt_bad;
     }
 
-    public int getCnt_badRoom() {
+    public long getCnt_badRoom() {
         return cnt_badRoom;
     }
 
-    public void setCnt_badRoom(int cnt_badRoom) {
+    public void setCnt_badRoom(long cnt_badRoom) {
         this.cnt_badRoom = cnt_badRoom;
     }
 
-    public int getCnt_toilet() {
+    public long getCnt_toilet() {
         return cnt_toilet;
     }
 
-    public void setCnt_toilet(int cnt_toilet) {
+    public void setCnt_toilet(long cnt_toilet) {
         this.cnt_toilet = cnt_toilet;
+    }
+
+    public GeoPoint getGeoPoint() {
+        return geoPoint;
+    }
+
+    public void setGeoPoint(GeoPoint geoPoint) {
+        this.geoPoint = geoPoint;
+    }
+
+    @Override
+    public String toString() {
+        return "LodgingItem{" +
+                "uid='" + uid + '\'' +
+                ", acceptance=" + acceptance +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", cnt_bad=" + cnt_bad +
+                ", cnt_badRoom=" + cnt_badRoom +
+                ", cnt_toilet=" + cnt_toilet +
+                ", convenience=" + convenience +
+                ", img_path=" + img_path +
+                ", fare=" + fare +
+                ", host_uid='" + host_uid + '\'' +
+                ", introductory='" + introductory + '\'' +
+                ", name='" + name + '\'' +
+                ", nfc_distance=" + nfc_distance +
+                ", reservation_time_list=" + reservation_time_list +
+                ", review=" + review +
+                ", state='" + state + '\'' +
+                ", title_image_path='" + title_image_path + '\'' +
+                ", geoPoint=" + geoPoint +
+                ", type=" + type +
+                '}';
     }
 }

@@ -66,6 +66,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-storage'
 
+    //firebase fcm
+    implementation 'com.google.firebase:firebase-messaging:23.0.3'
+
+    //일반 library
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 

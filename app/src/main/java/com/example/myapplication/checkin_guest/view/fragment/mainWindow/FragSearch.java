@@ -36,6 +36,8 @@ import com.example.myapplication.checkin_guest.viewModel.MainViewModel;
 
 import java.util.ArrayList;
 
+
+//이 화면이 메인화면이므로 로딩 시 회원정보를 가져온다.
 public class FragSearch extends Fragment {
     private final String TAG = "Frag_search";
     private FragSearchBinding fragSearchBinding = null;
@@ -88,6 +90,8 @@ public class FragSearch extends Fragment {
             }
         });
 
+
+
         fragSearchBinding.btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,6 +101,13 @@ public class FragSearch extends Fragment {
 
 
         init();
+
+        //로그인 돼있는 경우 회원정보 세팅
+        if(mainViewModel.isLogin()){
+            mainViewModel.setGetUserInfoListener();;
+            mainViewModel.getUserInfo();
+        }
+
 
         //배너 관련 변수 초기화
         mainViewModel.getListBanner().observe(getActivity(), data->{

@@ -2,18 +2,29 @@ package com.example.myapplication.checkin_guest.model;
 
 import java.util.ArrayList;
 
-public class User {
+public class Guest {
+    private static Guest instance;
+    private String pushToken;
     private String email;
     private ArrayList<String> favorites;
     private String img_path;
     private String nickName;
-    private int penalty;
+    private long penalty;
     private String phoneNumber;
-    private int point;
+    private long point;
     private ArrayList<String> reservationList;
 
-    public String getEmail() {
-        return email;
+    private Guest(){}
+
+    public static Guest getInstance(){
+        if(instance == null){
+            instance = new Guest();
+        }
+        return instance;
+    }
+
+    public String getEmail(Object email) {
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -44,11 +55,11 @@ public class User {
         this.nickName = nicName;
     }
 
-    public int getPenalty() {
+    public long getPenalty() {
         return penalty;
     }
 
-    public void setPenalty(int penalty) {
+    public void setPenalty(long penalty) {
         this.penalty = penalty;
     }
 
@@ -60,11 +71,11 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getPoint() {
+    public long getPoint() {
         return point;
     }
 
-    public void setPoint(int point) {
+    public void setPoint(long point) {
         this.point = point;
     }
 
@@ -74,5 +85,28 @@ public class User {
 
     public void setReservationList(ArrayList<String> reservationList) {
         this.reservationList = reservationList;
+    }
+
+    public String getPushToken() {
+        return pushToken;
+    }
+
+    public void setPushToken(String pushToken) {
+        this.pushToken = pushToken;
+    }
+
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "pushToken='" + pushToken + '\'' +
+                ", email='" + email + '\'' +
+                ", favorites=" + favorites +
+                ", img_path='" + img_path + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", penalty=" + penalty +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", point=" + point +
+                ", reservationList=" + reservationList +
+                '}';
     }
 }

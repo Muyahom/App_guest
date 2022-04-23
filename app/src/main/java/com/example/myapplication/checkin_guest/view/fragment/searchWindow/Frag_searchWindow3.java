@@ -1,6 +1,7 @@
 package com.example.myapplication.checkin_guest.view.fragment.searchWindow;
 
 import android.content.Intent;
+import android.location.Geocoder;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -10,10 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.databinding.FragSearchWindow3Binding;
+import com.example.myapplication.checkin_guest.view.activity.SearchActivity;
 import com.example.myapplication.checkin_guest.view.activity.SearchResultActivity;
+import com.google.firebase.firestore.GeoPoint;
 
 
 public class Frag_searchWindow3 extends Fragment {
@@ -36,64 +40,67 @@ public class Frag_searchWindow3 extends Fragment {
         fragSearchWindow3Binding = DataBindingUtil.inflate(inflater, R.layout.frag_search_window3, container, false);
 
         fragSearchWindow3Binding.rgb.setOnCheckedChangeListener((radioGroup, i) -> {
-            if(i == 0){
+            if (i == 0) {
                 checkTypeNum = 0;
-            }else if(i == 1){
+            } else if (i == 1) {
                 checkTypeNum = 1;
-            }else{
+            } else {
                 checkTypeNum = 2;
             }
+
         });
 
         fragSearchWindow3Binding.btnSearch.setOnClickListener(view -> {
+            if (badCount == 0 && badRoomCount == 0 && toiletCount == 0 && checkTypeNum == -1) {
+                Toast.makeText(getContext(), "조건을 선택해 주세요", Toast.LENGTH_SHORT).show();
+            } else {
+                ((SearchActivity) getActivity()).setCondition(badCount, badRoomCount, toiletCount, checkTypeNum);
+                ((SearchActivity) getActivity()).setConditionSet(true);
+            }
 
         });
 
         fragSearchWindow3Binding.btnSkip.setOnClickListener(view -> {
-
+            ((SearchActivity) getActivity()).setConditionSet(false);
         });
 
         fragSearchWindow3Binding.btnPlusBad.setOnClickListener(view -> {
             badCount += 1;
-            fragSearchWindow3Binding.txtBadCount.setText(badCount);
+            fragSearchWindow3Binding.txtBadCount.setText(String.valueOf(badCount));
         });
 
         fragSearchWindow3Binding.btnMinusBad.setOnClickListener(view -> {
             if (badCount >= 1) {
                 badCount -= 1;
-                fragSearchWindow3Binding.txtBadCount.setText(badCount);
+                fragSearchWindow3Binding.txtBadCount.setText(String.valueOf(badCount));
             }
         });
 
         fragSearchWindow3Binding.btnPlusBadroom.setOnClickListener(view -> {
             badRoomCount += 1;
-            fragSearchWindow3Binding.txtBadCount.setText(badRoomCount);
+            fragSearchWindow3Binding.txtBadroomCount.setText(String.valueOf(badRoomCount));
 
         });
 
         fragSearchWindow3Binding.btnMinusBadroom.setOnClickListener(view -> {
             if (badRoomCount >= 1) {
                 badRoomCount -= 1;
-                fragSearchWindow3Binding.txtBadCount.setText(badRoomCount);
+                fragSearchWindow3Binding.txtBadroomCount.setText(String.valueOf(badRoomCount));
             }
         });
 
         fragSearchWindow3Binding.btnPlusToilet.setOnClickListener(view -> {
             toiletCount += 1;
-            fragSearchWindow3Binding.txtToiletCount.setText(toiletCount);
+            fragSearchWindow3Binding.txtToiletCount.setText(String.valueOf(toiletCount));
         });
 
         fragSearchWindow3Binding.btnMinusToilet.setOnClickListener(view -> {
             if (toiletCount >= 1) {
                 toiletCount -= 1;
-                fragSearchWindow3Binding.txtToiletCount.setText(toiletCount);
+                fragSearchWindow3Binding.txtToiletCount.setText(String.valueOf(toiletCount));
             }
         });
 
-        fragSearchWindow3Binding.btnSearch.setOnClickListener(view -> {
-            Intent intent = new Intent(getActivity(), SearchResultActivity.class);
-            startActivity(intent);
-        });
 
         return fragSearchWindow3Binding.getRoot();
     }

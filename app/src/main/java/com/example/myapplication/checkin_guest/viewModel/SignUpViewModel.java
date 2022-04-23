@@ -1,7 +1,10 @@
 package com.example.myapplication.checkin_guest.viewModel;
 
+import static java.lang.Thread.sleep;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -31,9 +34,15 @@ public class SignUpViewModel extends ViewModel {
     //실행중인 명령어가 로딩중인지 확인
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
 
+    //회원가입이 완료되었는지 확인
+    private MutableLiveData<Boolean> isSuccess = new MutableLiveData<Boolean>();
+
+
     //사용자로 부터 입력 받는 변수 세팅(비밀번호 제외)
     private String email;
     private String phoneNumber;
+
+    private String user_uid;
 
     public SignUpViewModel() {
         signUpExcutor = new SignUpExcutor();
@@ -55,17 +64,26 @@ public class SignUpViewModel extends ViewModel {
         return isLoading;
     }
 
+    public MutableLiveData<Boolean> getIsSuccess() {
+        return isSuccess;
+    }
+
     //리스너 등록
     public SignUpListener getSignUpListener() {
         return new SignUpListener() {
             @Override
             public void onSuccessInsertUserInfo() {
-                isLoading.setValue(false);
                 Toast.makeText(mActivity.get(), "회원가입 완료!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mActivity.get(), MainActivity.class);
                 isLoading.setValue(false);
-                mActivity.get().startActivity(intent);
-                finishActivity();
+                isSuccess.setValue(true);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        Intent intent = new Intent(mActivity.get(), MainActivity.class);
+                        mActivity.get().startActivity(intent);
+                        finishActivity();
+                    }
+                }, 1000);
             }
 
             @Override
@@ -75,12 +93,13 @@ public class SignUpViewModel extends ViewModel {
             }
 
             @Override
-            public void onSuccessRegisterAuth(Task task) {
+            public void onSuccessRegisterAuth(Task task, String uid) {
                 try {
                     task.getResult(ApiException.class);
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     Log.d(TAG, user.getUid());
                     Toast.makeText(mActivity.get(), "등록 성공", Toast.LENGTH_SHORT).show();
+                    user_uid = uid;
                     makeUserMap(email, phoneNumber);
                 } catch (ApiException e) {
                     isLoading.setValue(false);
@@ -114,7 +133,8 @@ public class SignUpViewModel extends ViewModel {
     }
 
     private void makeUserMap(String email, String phoneNumber) {
-        try{
+        try {
+            Log.d(TAG, "makeUserMap");
             Map<String, Object> user_info = new HashMap<>();
             user_info.put("email", email);
             user_info.put("phoneNumber", phoneNumber);
@@ -128,17 +148,19 @@ public class SignUpViewModel extends ViewModel {
             user_info.put("point", 0);
             user_info.put("register_lodging", new ArrayList<String>());
             user_info.put("reservationList", new ArrayList<String>());
+            user_info.put("pushtoken", "0");
 
             settingProfile(user_info);
 
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             Log.d(TAG, "user info null point exception");
+            e.printStackTrace();
         }
     }
 
     public void settingProfile(Map<String, Object> user_info) {
         //그 외 다른 값은 회원가입 시 받지 않으므로 계정정보에서 추가 혹은 수정 기능 지원
-        signUpExcutor.send_userInfo(user_info);
+        Log.d(TAG, "SettingProfile");
+        signUpExcutor.send_userInfo(user_info, user_uid);
     }
-
 }
