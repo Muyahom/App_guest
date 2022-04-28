@@ -57,7 +57,7 @@
                 android:layout_width="150dp"
                 android:layout_height="100dp"
                 android:scaleType="fitCenter"
-                android:src="@drawable/list1"
+                android:src="@drawable/dummy"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -87,13 +87,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosans"
-                        android:text="숙소 이름"
+                        android:text="성결하우스"
                         android:textColor="@color/white" />
 
                     <View
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1" />
+
 
                 </LinearLayout>
 
@@ -107,7 +108,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosans"
-                        android:text="예약기간"
+                        android:text="2022-04-23~2022-04-25"
                         android:textColor="@color/white" />
 
                 </LinearLayout>

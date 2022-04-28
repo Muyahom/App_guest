@@ -24,7 +24,8 @@ public class LodgingItem implements Serializable {
     private ArrayList<String> review;
     private String state;
     private String title_image_path; // 숙소 타이틀 이미지
-    private GeoPoint geoPoint;
+    private double latitude;
+    private double longitude;
     private long type;
 
     public String getUid() {
@@ -179,12 +180,11 @@ public class LodgingItem implements Serializable {
         this.cnt_toilet = cnt_toilet;
     }
 
-    public GeoPoint getGeoPoint() {
-        return geoPoint;
-    }
 
     public void setGeoPoint(GeoPoint geoPoint) {
-        this.geoPoint = geoPoint;
+
+        this.latitude = geoPoint.getLatitude();
+        this.longitude = geoPoint.getLongitude();
     }
 
     @Override
@@ -208,7 +208,6 @@ public class LodgingItem implements Serializable {
                 ", review=" + review +
                 ", state='" + state + '\'' +
                 ", title_image_path='" + title_image_path + '\'' +
-                ", geoPoint=" + geoPoint +
                 ", type=" + type +
                 '}';
     }

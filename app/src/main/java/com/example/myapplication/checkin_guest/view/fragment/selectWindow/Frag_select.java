@@ -17,6 +17,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.adapter.ViewPagerAdapterSelect;
 import com.example.myapplication.checkin_guest.databinding.FragSelectBinding;
+import com.example.myapplication.checkin_guest.model.LodgingItem;
 import com.example.myapplication.checkin_guest.model.ViewPageDataSelect;
 import com.example.myapplication.checkin_guest.util.Util;
 import com.example.myapplication.checkin_guest.view.activity.ReservationActivity;
@@ -28,6 +29,8 @@ public class Frag_select extends Fragment {
 
     private FragSelectBinding fragSelectBinding = null;
     private ViewPagerAdapterSelect viewPagerAdapterSelect;
+
+    private LodgingItem select_lodging;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,15 +52,19 @@ public class Frag_select extends Fragment {
         });
 
         init();
+
+        Intent intent = getActivity().getIntent();
+        select_lodging = (LodgingItem) intent.getSerializableExtra("lodging");
+
+
         insertTemp();
         return fragSelectBinding.getRoot();
 
     }
     private void init(){
         viewPagerAdapterSelect = new ViewPagerAdapterSelect();
-
-
     }
+
     //임시 데이터 삽입 - 삭제 예정
     private void insertTemp(){
         ArrayList<ViewPageDataSelect> list = new ArrayList<>();
