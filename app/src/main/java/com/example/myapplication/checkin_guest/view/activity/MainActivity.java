@@ -55,9 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 .AndroidViewModelFactory(getApplication())).get(MainViewModel.class);
         mainViewModel.setParentContext(this);
 
-        mainViewModel.getFirebaseToken();
 
         init();
+
+        mainViewModel.setGetPushTokenListener();
+
+        mainViewModel.getFirebaseToken();
 
         mainViewModel.getIsSetUserInfo().observe(this, data->{
             Log.d(TAG, "observe");
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mainViewModel.setGetPushTokenListener();
 
         searchScreenSetting();
         activityMainBinding.bottomNavigationView.setOnItemSelectedListener(item -> {

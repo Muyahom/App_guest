@@ -35,8 +35,9 @@ public class FragChatting extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         fragChattingBinding = DataBindingUtil.inflate(inflater, R.layout.frag_chatting, container, false);
-        mainViewModel = new ViewModelProvider(this, new ViewModelProvider
-                .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+//        mainViewModel = new ViewModelProvider(requireActivity(), new ViewModelProvider
+//                .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
 
         if(mainViewModel.isLogin()){
             //로그인이 되있는 상태라면

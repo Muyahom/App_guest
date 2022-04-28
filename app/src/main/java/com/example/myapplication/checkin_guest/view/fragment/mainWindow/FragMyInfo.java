@@ -41,8 +41,9 @@ public class FragMyInfo extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mainViewModel = new ViewModelProvider(this, new ViewModelProvider
-                .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+//        mainViewModel = new ViewModelProvider(requireActivity(), new ViewModelProvider
+//                .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
 
         fragMyInfoBinding = DataBindingUtil.inflate(inflater, R.layout.frag_my_info, container, false);
 

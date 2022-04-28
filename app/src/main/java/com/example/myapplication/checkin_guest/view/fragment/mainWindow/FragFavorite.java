@@ -31,8 +31,9 @@ public class FragFavorite extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         fragFavoriteBinding = DataBindingUtil.inflate(inflater, R.layout.frag_favorite, container, false);
-        mainViewModel = new ViewModelProvider(this, new ViewModelProvider
-                .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+//        mainViewModel = new ViewModelProvider(requireActivity(), new ViewModelProvider
+//                .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
 
         if(mainViewModel.isLogin()){
             //로그인이 되있는 상태라면

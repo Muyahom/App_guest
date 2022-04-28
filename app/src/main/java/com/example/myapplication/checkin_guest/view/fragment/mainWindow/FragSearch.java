@@ -67,8 +67,12 @@ public class FragSearch extends Fragment {
 
         fragSearchBinding = DataBindingUtil.inflate(inflater, R.layout.frag_search, container, false);
 
-        mainViewModel = new ViewModelProvider(this, new ViewModelProvider
-                .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+
+//        mainViewModel = new ViewModelProvider(requireActivity(), new ViewModelProvider
+//                .AndroidViewModelFactory(getActivity().getApplication())).get(MainViewModel.class);
+
+        mainViewModel = new ViewModelProvider(requireActivity()).get(MainViewModel.class);
+
 
         mainViewModel.setFireStoreExcutorListener();
         mainViewModel.setFireStorageExcutorListener();

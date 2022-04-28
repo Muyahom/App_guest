@@ -74,6 +74,20 @@ public class MainViewModel extends ViewModel {
         firebaseMessageExcutor.getToken();
     }
 
+    /* token값 비교 */
+    public void compareToken(){
+        Log.d(TAG, "compareToken");
+
+        if(guest.getPushToken() == null){
+            fireStoreExcutor.setPushToken(push_token, FirebaseAuth.getInstance().getUid());
+        }else if(guest.getPushToken().equals(push_token)){
+            Log.d(TAG, "true");
+        }else{
+            Log.d(TAG, "token : " + push_token + " getPushToken : " + guest.getPushToken());
+            fireStoreExcutor.setPushToken(push_token, FirebaseAuth.getInstance().getUid());
+        }
+    }
+
     // activity setting
     public void setParentContext(Activity parentContext) {
         mActivityRef = new WeakReference<>(parentContext);
@@ -191,17 +205,6 @@ public class MainViewModel extends ViewModel {
 
     private void getBannerImg(){
         fireStorageExcutor.getBannerImage(listBannerTemp);
-    }
-
-    /* token값 비교 */
-    public void compareToken(){
-        Log.d(TAG, "compareToken");
-        if(guest.getPushToken().equals(push_token)){
-            Log.d(TAG, "true");
-        }else{
-            Log.d(TAG, "token : " + push_token + " getPushToken : " + guest.getPushToken());
-            fireStoreExcutor.setPushToken(push_token, FirebaseAuth.getInstance().getUid());
-        }
     }
 
 }
