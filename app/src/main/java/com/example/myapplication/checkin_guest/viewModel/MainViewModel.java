@@ -1,6 +1,7 @@
 package com.example.myapplication.checkin_guest.viewModel;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import com.example.myapplication.checkin_guest.callback.GetPushToken;
 import com.example.myapplication.checkin_guest.callback.GetUserInfoListener;
 import com.example.myapplication.checkin_guest.model.Banner;
 import com.example.myapplication.checkin_guest.model.Guest;
+import com.example.myapplication.checkin_guest.view.activity.ProfileSettingActivity;
 import com.example.myapplication.checkin_guest.viewModel.Executor.FireStorageExcutor;
 import com.example.myapplication.checkin_guest.viewModel.Executor.FireStoreExcutor;
 import com.example.myapplication.checkin_guest.viewModel.Executor.FirebaseMessageExcutor;
@@ -152,7 +154,9 @@ public class MainViewModel extends ViewModel {
         };
     }
 
-    /*  FireStore로 부터 계정 정보를 제공받음. */
+    /*
+        FireStore로 부터 계정 정보를 제공받음.
+                                                */
 
     public void setGetUserInfoListener(){
         fireStoreExcutor.setGetUserInfoListener(getUserInfoListener());
@@ -168,18 +172,27 @@ public class MainViewModel extends ViewModel {
             public void onSuccess(Task<DocumentSnapshot> task) {
                 Log.d(TAG, "getUserInfoSuccess");
                 DocumentSnapshot documentSnapshot = task.getResult();
-                guest.setEmail((String) documentSnapshot.get("email"));
-                guest.setFavorites((ArrayList<String>) documentSnapshot.get("favorites"));
-                guest.setImg_path((String) documentSnapshot.get("img_path"));
-                guest.setNicName((String) documentSnapshot.get("nickName"));
-                guest.setPenalty((long) documentSnapshot.get("penalty"));
-                guest.setPhoneNumber((String) documentSnapshot.get("phoneNumber"));
-                guest.setPoint((long) documentSnapshot.get("point"));
-                guest.setReservationList((ArrayList<String>) documentSnapshot.get("reservationList"));
-                String token = (String)documentSnapshot.get("pushtoken");
-                guest.setPushToken(token);
-                Log.d(TAG, guest.toString());
-                isSetUserInfo.setValue(true);
+                Log.d(TAG, String.valueOf(documentSnapshot.getData()));
+                if(documentSnapshot.getData() != null){
+                    guest.setEmail((String) documentSnapshot.get("email"));
+                    guest.setFavorites((ArrayList<String>) documentSnapshot.get("favorites"));
+                    guest.setImg_path((String) documentSnapshot.get("img_path"));
+                    guest.setNicName((String) documentSnapshot.get("nickName"));
+                    guest.setPenalty((long) documentSnapshot.get("penalty"));
+                    guest.setPhoneNumber((String) documentSnapshot.get("phoneNumber"));
+                    guest.setPoint((long) documentSnapshot.get("point"));
+                    guest.setReservationList((ArrayList<String>) documentSnapshot.get("reservationList"));
+                    String token = (String) documentSnapshot.get("pushtoken");
+                    guest.setPushToken(token);
+                    Log.d(TAG, guest.toString());
+                    isSetUserInfo.setValue(true);
+                }else{
+                    Toast.makeText(mActivityRef.get(), "회원등록화면으로 넘어갑니다.", Toast.LENGTH_SHORT).show();
+                    // 구글 로그인을 한 경우 회원정보 등록이 안되어있을 수 있음.
+                    Intent intent = new Intent(mActivityRef.get(), ProfileSettingActivity.class);
+                    intent.putExtra("email", user.getEmail());
+                    mActivityRef.get().startActivity(intent);
+                }
             }
             @Override
             public void onFailed(Task<DocumentSnapshot> task) {

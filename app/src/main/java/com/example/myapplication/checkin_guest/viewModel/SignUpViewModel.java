@@ -77,12 +77,10 @@ public class SignUpViewModel extends ViewModel {
                 isLoading.setValue(false);
                 isSuccess.setValue(true);
                 Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        Intent intent = new Intent(mActivity.get(), MainActivity.class);
-                        mActivity.get().startActivity(intent);
-                        finishActivity();
-                    }
+                handler.postDelayed(() -> {
+                    Intent intent = new Intent(mActivity.get(), MainActivity.class);
+                    mActivity.get().startActivity(intent);
+                    finishActivity();
                 }, 1000);
             }
 
@@ -132,7 +130,7 @@ public class SignUpViewModel extends ViewModel {
         signUpExcutor.requestSignUp(email, password, mActivity.get());
     }
 
-    private void makeUserMap(String email, String phoneNumber) {
+    public void makeUserMap(String email, String phoneNumber) {
         try {
             Log.d(TAG, "makeUserMap");
             Map<String, Object> user_info = new HashMap<>();
@@ -162,5 +160,9 @@ public class SignUpViewModel extends ViewModel {
         //그 외 다른 값은 회원가입 시 받지 않으므로 계정정보에서 추가 혹은 수정 기능 지원
         Log.d(TAG, "SettingProfile");
         signUpExcutor.send_userInfo(user_info, user_uid);
+    }
+
+    public void setUser_uid(String user_uid) {
+        this.user_uid = user_uid;
     }
 }

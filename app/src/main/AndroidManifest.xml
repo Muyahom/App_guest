@@ -19,8 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Checkin_guest">
         <activity
+            android:name=".view.activity.ProfileSettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.Splash"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -64,9 +67,7 @@
         <activity
             android:name=".view.activity.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".view.activity.SelectActivity"
             android:exported="false"
