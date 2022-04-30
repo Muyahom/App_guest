@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.myapplication.checkin_guest.callback.GetLodgingImg;
 import com.example.myapplication.checkin_guest.callback.GetLodgingTitleImg;
 import com.example.myapplication.checkin_guest.callback.SearchListener;
 import com.example.myapplication.checkin_guest.model.LodgingItem;
@@ -112,9 +113,25 @@ public class SearchResultViewModel extends ViewModel {
         fireStorageExcutor.setGetLodgingTitleImg(getLodgingTitleImgCallBack());
     }
 
+    private void getLodgingImg() {
+        fireStorageExcutor.getLodgingImage(this.lodgingList);
+    }
+    private GetLodgingImg getLodgingImgCallBack() {
+        return () -> {
+            Log.d(TAG, "successGetLodgingTitleImg");
+            lodgingMLList.setValue(lodgingList);
+            isLoading.setValue(false);
+        };
+    }
+    private void setLodgingImgCallBack() {
+        fireStorageExcutor.setGetLodgingTitleImg(getLodgingTitleImgCallBack());
+    }
+
     private void getLodgingTitleImg() {
         fireStorageExcutor.getLodgingImage(this.lodgingList);
     }
+
+
 
     private GetLodgingTitleImg getLodgingTitleImgCallBack() {
         return () -> {
@@ -123,5 +140,6 @@ public class SearchResultViewModel extends ViewModel {
             isLoading.setValue(false);
         };
     }
+
 
 }

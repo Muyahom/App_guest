@@ -1,10 +1,11 @@
 package com.example.myapplication.checkin_guest.view.fragment.selectWindow;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,36 +13,42 @@ import android.view.ViewGroup;
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.adapter.ViewPagerAdapterSelect;
 import com.example.myapplication.checkin_guest.databinding.FragSelectBinding;
 import com.example.myapplication.checkin_guest.model.LodgingItem;
-import com.example.myapplication.checkin_guest.model.ViewPageDataSelect;
-import com.example.myapplication.checkin_guest.util.Util;
 import com.example.myapplication.checkin_guest.view.activity.ReservationActivity;
+import com.example.myapplication.checkin_guest.viewModel.SearchResultViewModel;
+
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Frag_select extends Fragment {
 
     private FragSelectBinding fragSelectBinding = null;
     private ViewPagerAdapterSelect viewPagerAdapterSelect;
-
+    private ArrayList<LodgingItem> room_img;
+    int i=0;
     private LodgingItem select_lodging;
+    private SearchResultViewModel searchResultViewModel;
+    private ArrayList<LodgingItem> room;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        searchResultViewModel = new ViewModelProvider(requireActivity()).get(SearchResultViewModel.class);
+
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         fragSelectBinding = DataBindingUtil.inflate(inflater, R.layout.frag_select, container, false);
         //예약버튼 눌렀을때 페이지이동
         fragSelectBinding.btnReservation.setOnClickListener(new View.OnClickListener() {
@@ -57,33 +64,77 @@ public class Frag_select extends Fragment {
         select_lodging = (LodgingItem) intent.getSerializableExtra("lodging");
 
 
-        insertTemp();
+
+        ArrayList<String>a=select_lodging.getImg_path();
+        for(int i=0;i<a.size();i++){
+            String ab=a.get(i);
+            ArrayList<ViewPagerAdapterSelect>img=new ArrayList<>();
+            Log.d(TAG, "onCreateView: "+ab);
+
+        }
+        Log.d(TAG, "title: "+select_lodging.getTitle_image_path());
+
+        fragSelectBinding.roomTitle.setText(select_lodging.getName());
+        fragSelectBinding.roomDetail.setText(select_lodging.getIntroductory());
+        fragSelectBinding.roomPrice.setText(Long.toString(select_lodging.getFare()));
+        fragSelectBinding.address.setText(select_lodging.getAddress());
+        switch ((int) select_lodging.getType()){
+            case 1:
+                fragSelectBinding.roomType.setText("집 전체");
+                break;
+            case 2:
+                fragSelectBinding.roomType.setText("개인실");
+                break;
+            case 3:
+                fragSelectBinding.roomType.setText("호텔객실");
+                break;
+        }
+        //nfc발급숙소가 아닐경우
+        if(select_lodging.isNfc_distance()==false){
+            fragSelectBinding.imageView2.setVisibility(View.INVISIBLE);
+        }
+        //숙소 편의시설
+        ArrayList<String>conven=select_lodging.getConvenience();
+        for (int i=0;i<conven.size();i++){
+            String conven1=conven.get(i);
+            Log.d(TAG, "onCreateView: "+conven1);
+            if(conven1.equals("WIFI")){
+                fragSelectBinding.wifi.setVisibility(View.VISIBLE);
+            }
+            if(conven1.equals("주차장")){
+                fragSelectBinding.park.setVisibility(View.VISIBLE);
+            }
+            if(conven1.equals("주방")){
+                fragSelectBinding.kitchen.setVisibility(View.VISIBLE);
+            }
+            if(conven1.equals("에어컨")){
+                fragSelectBinding.air.setVisibility(View.VISIBLE);
+            }
+            if (conven1.equals("TV")) {
+                fragSelectBinding.tv.setVisibility(View.VISIBLE);
+            }
+
+        }
+        //숙소주소
+
+
         return fragSelectBinding.getRoot();
+
+
+
+
 
     }
     private void init(){
+
         viewPagerAdapterSelect = new ViewPagerAdapterSelect();
-    }
 
-    //임시 데이터 삽입 - 삭제 예정
-    private void insertTemp(){
-        ArrayList<ViewPageDataSelect> list = new ArrayList<>();
-        ViewPageDataSelect viewPageDataBanner1 = new ViewPageDataSelect();
-        BitmapDrawable drawable1 = (BitmapDrawable) getResources().getDrawable(R.drawable.main);
-        Bitmap bitmap1 = drawable1.getBitmap();
-        viewPageDataBanner1.setBitmap(bitmap1);
-        ViewPageDataSelect viewPageDataBanner2 = new ViewPageDataSelect();
-        BitmapDrawable drawable2 = (BitmapDrawable) getResources().getDrawable(R.drawable.main);
-        Bitmap bitmap2 = drawable2.getBitmap();
-        viewPageDataBanner2.setBitmap(bitmap2);
-        list.add(viewPageDataBanner1);
-        list.add(viewPageDataBanner2);
-        viewPagerAdapterSelect.setListData(list);
-        fragSelectBinding.viewPagerSelectFrag.setAdapter(viewPagerAdapterSelect);
-        //뷰페이저에 인디케이터추가
-        //fragSelectBinding.dotsIndicator.setViewPager2(fragSelectBinding.viewPagerSelectFrag);
+
 
     }
+
+
+
     //예약 페이지 이동함수
     private void intent_select(){
         Intent intent = new Intent(getActivity(), ReservationActivity.class);

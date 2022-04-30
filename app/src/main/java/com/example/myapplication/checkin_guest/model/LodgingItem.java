@@ -182,9 +182,15 @@ public class LodgingItem implements Serializable {
 
 
     public void setGeoPoint(GeoPoint geoPoint) {
-
         this.latitude = geoPoint.getLatitude();
         this.longitude = geoPoint.getLongitude();
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+    public double getLongitude(){
+        return longitude;
     }
 
     @Override

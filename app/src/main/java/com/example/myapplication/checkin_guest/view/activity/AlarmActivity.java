@@ -27,6 +27,8 @@ public class AlarmActivity extends AppCompatActivity {
         // 검색창 UI 관련 소스코드, 상태바 투명 및 바텀내비게이션 높이에 따른 레이아웃 페딩 설정
         Util.transparency_statusBar(this);
         alarmBinding.linear.setPadding(0, 0, 0, Util.getBottomNavigationHeight(getApplicationContext()));
+
+
         ViewPager vp= findViewById(R.id.viewpager);
         //뷰페이저활용 탭화면 전환
         ViewPagerAdapterAlarm adapterAlarm = new ViewPagerAdapterAlarm(getSupportFragmentManager());

@@ -71,7 +71,7 @@ public class RecyclerViewAdapterSearchResult extends RecyclerView.Adapter<Recycl
             }
             switch ((int) lodgingItem.getType()){
                 case 1:
-                    txt_lodging_type.setText("집 전제");
+                    txt_lodging_type.setText("집 전체");
                     break;
                 case 2:
                     txt_lodging_type.setText("개인실");

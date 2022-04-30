@@ -3,6 +3,7 @@ package com.example.myapplication.checkin_guest.viewModel.Executor;
 import android.util.Log;
 
 import com.example.myapplication.checkin_guest.callback.FireStorageExcutorListener;
+import com.example.myapplication.checkin_guest.callback.GetLodgingImg;
 import com.example.myapplication.checkin_guest.callback.GetLodgingTitleImg;
 import com.example.myapplication.checkin_guest.data.FireStorageAttribute;
 import com.example.myapplication.checkin_guest.model.Banner;
@@ -18,6 +19,8 @@ public class FireStorageExcutor {
     private FireStorageExcutorListener mListener;
     private FireStorageAttribute fireStorageAttribute;
     private GetLodgingTitleImg getLodgingTitleImgListener;
+    private GetLodgingImg getLodgingImgListener;
+    LodgingItem lodgingItem=new LodgingItem();
 
 
     public FireStorageExcutor() {
@@ -58,8 +61,10 @@ public class FireStorageExcutor {
         StorageReference storageReference = storage.getReferenceFromUrl(FireStorageAttribute.getInstance().getSTORAGE_ROUTE());
 
         for(LodgingItem lodgingItem:arrayList){
-            Log.d(TAG, FireStorageAttribute.getInstance().getSTORAGE_ROUTE() + "/" + fireStorageAttribute.getDOC_ROUTE_LODGING() + lodgingItem.getTitle_image_path());
-            StorageReference pathReference = storageReference.child(fireStorageAttribute.getDOC_ROUTE_LODGING() + lodgingItem.getTitle_image_path());
+            Log.d(TAG, FireStorageAttribute.getInstance().getSTORAGE_ROUTE() + "/" + fireStorageAttribute.
+                    getDOC_ROUTE_LODGING() + lodgingItem.getTitle_image_path());
+            StorageReference pathReference = storageReference.child(fireStorageAttribute.
+                    getDOC_ROUTE_LODGING() + lodgingItem.getTitle_image_path());
             pathReference.getDownloadUrl().addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     Log.d(TAG, "download Url onComplete");
@@ -70,4 +75,38 @@ public class FireStorageExcutor {
             });
         }
     }
+
+
+
+    //-------내가 건든곳
+    public void setGetLodgingImg(GetLodgingImg getLodgingImg){
+        this.getLodgingImgListener = getLodgingImg;
+    }
+
+    public void getLodgingImage_(ArrayList<LodgingItem> arrayList){
+        StorageReference storageReference = storage.getReferenceFromUrl(FireStorageAttribute.
+                getInstance().getSTORAGE_ROUTE());
+
+        for(LodgingItem lodgingItem:arrayList){
+            Log.d(TAG, FireStorageAttribute.getInstance().getSTORAGE_ROUTE() + "/" +
+                    fireStorageAttribute.getDOC_ROUTE_LODGING() + lodgingItem.getImg_path());
+            StorageReference pathReference = storageReference.child(fireStorageAttribute.
+                    getDOC_ROUTE_LODGING() + lodgingItem.getImg_path());
+            pathReference.getDownloadUrl().addOnCompleteListener(task -> {
+                if(task.isSuccessful()){
+                    Log.d(TAG, "download Url onComplete");
+                    String img_url = task.getResult().toString();
+                    ArrayList<String>img_path;
+                    getLodgingTitleImgListener.onSuccess();
+                }
+            });
+        }
+    }
+
+
+
+
+
+
+
 }
