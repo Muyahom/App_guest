@@ -20,13 +20,13 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
                             tools:ignore="MissingClass">
-                                <androidx.viewpager2.widget.ViewPager2
-                                    android:id="@+id/viewpager_room"
+                                <ImageView
+                                    android:id="@+id/image"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/height_viewpager_selectimg"
                                     android:orientation="horizontal">
 
-                                </androidx.viewpager2.widget.ViewPager2>
+                                </ImageView>
 
 
 

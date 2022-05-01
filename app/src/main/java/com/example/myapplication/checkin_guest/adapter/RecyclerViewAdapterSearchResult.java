@@ -1,7 +1,10 @@
 package com.example.myapplication.checkin_guest.adapter;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +60,7 @@ public class RecyclerViewAdapterSearchResult extends RecyclerView.Adapter<Recycl
         }
 
         public void onBind(LodgingItem lodgingItem){
+            Log.d(TAG, lodgingItem.getImg_path().get(1));
             Glide.with(mContext)
                     .load(lodgingItem.getTitle_image_path())
                     .skipMemoryCache(true)

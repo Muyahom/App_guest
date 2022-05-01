@@ -3,9 +3,11 @@ package com.example.myapplication.checkin_guest.model;
 import com.google.firebase.firestore.GeoPoint;
 
 import java.io.Serializable;
+import java.util.AbstractCollection;
 import java.util.ArrayList;
 
 public class LodgingItem implements Serializable {
+
     private String uid; // 숙소 식별
     private long acceptance;
     private String address;

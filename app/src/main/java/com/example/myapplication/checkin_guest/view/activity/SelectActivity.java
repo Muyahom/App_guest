@@ -5,10 +5,12 @@ import static android.content.ContentValues.TAG;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,15 +19,24 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.adapter.ViewPagerAdapterSelect;
 import com.example.myapplication.checkin_guest.databinding.ActivitySelectBinding;
 import com.example.myapplication.checkin_guest.model.LodgingItem;
 import com.example.myapplication.checkin_guest.util.Util;
 import com.example.myapplication.checkin_guest.view.fragment.selectWindow.Frag_select;
+import com.example.myapplication.checkin_guest.viewModel.Executor.FireStorageExcutor;
+import com.example.myapplication.checkin_guest.viewModel.Executor.FireStoreExcutor;
 import com.example.myapplication.checkin_guest.viewModel.SearchResultViewModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.GeoPoint;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraUpdate;
 import com.naver.maps.map.MapFragment;
@@ -38,9 +49,12 @@ import java.util.ArrayList;
 
 public class SelectActivity extends AppCompatActivity implements OnMapReadyCallback {
     private Fragment frag_select;
-    private ActivitySelectBinding activitySelectBinding;
-    private LodgingItem select_lodging;
+    ActivitySelectBinding activitySelectBinding;
+    LodgingItem select_lodging;
     private SearchResultViewModel searchResultViewModel;
+
+    Context context;
+
 
 
 
@@ -52,6 +66,9 @@ public class SelectActivity extends AppCompatActivity implements OnMapReadyCallb
         Intent intent = getIntent();
         select_lodging = (LodgingItem) intent.getSerializableExtra("lodging");
 
+
+
+
         activitySelectBinding = DataBindingUtil.setContentView(this, R.layout.activity_select);
         //예약화면 이동
         activitySelectBinding.btnReservation.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +79,9 @@ public class SelectActivity extends AppCompatActivity implements OnMapReadyCallb
 
             }
         });
+        //-------------
+
+
 
         ArrayList<String> a=select_lodging.getImg_path();
         for(int i=0;i<a.size();i++){
@@ -115,7 +135,8 @@ public class SelectActivity extends AppCompatActivity implements OnMapReadyCallb
         }
 
 
-        //init();
+
+        Img();
         // 검색창 UI 관련 소스코드, 상태바 투명 및 바텀내비게이션 높이에 따른 레이아웃 페딩 설정
         Util.transparency_statusBar(this);
         activitySelectBinding.hi.setPadding(0, 0, 0, Util.getBottomNavigationHeight(getApplicationContext()));
@@ -144,4 +165,27 @@ public class SelectActivity extends AppCompatActivity implements OnMapReadyCallb
         naverMap.moveCamera(cameraUpdate);
 
     }
+    public void Img(){
+        FirebaseStorage storage = FirebaseStorage.getInstance("gs://moyahome-23245.appspot.com");
+        StorageReference storageRef = storage.getReference();
+        storageRef.child("lodging_img/"+select_lodging.getImg_path().get(1)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                //이미지 로드 성공시
+
+                Glide.with(getApplicationContext())
+                        .load(uri)
+                        .into(activitySelectBinding.image);
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                //이미지 로드 실패시
+                Toast.makeText(getApplicationContext(), "실패", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
 }
