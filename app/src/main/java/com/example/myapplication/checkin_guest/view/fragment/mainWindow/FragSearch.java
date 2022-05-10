@@ -133,7 +133,7 @@ public class FragSearch extends Fragment {
     private void init(){
         //adapter 초기화
         viewPagerAdapterBanner = new ViewPagerAdapterBanner(getContext());
-        recyclerViewAdapter_recommendation = new RecyclerViewAdapterRecommendation();
+        recyclerViewAdapter_recommendation = new RecyclerViewAdapterRecommendation(getActivity().getApplicationContext());
         recyclerViewAdapter_popular = new RecyclerViewAdapterPopular();
         
         //recyclerview 가로 지정

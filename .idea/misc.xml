@@ -26,7 +26,9 @@
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/drawable/transparent_calendar_element.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/font/notosans.xml" value="0.32535271483539974" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_account.xml" value="0.1" />
-        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_login.xml" value="0.19444444444444445" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_alarm.xml" value="0.1767905711695376" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_help.xml" value="0.1813236627379873" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_login.xml" value="0.23859649122807017" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_pay.xml" value="0.1125" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_profile_setting.xml" value="0.1791363830696879" />
@@ -34,7 +36,7 @@
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_search.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_search_result.xml" value="0.264" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_sign_up.xml" value="0.176" />
-        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_smart_card.xml" value="0.264" />
+        <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_smart_card.xml" value="0.11228070175438597" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_smart_key.xml" value="0.25" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="..\:/Users/seongminWoo/Desktop/Project/Checkin/app_guest/app/src/main/res/layout/bottom_sheet_search_result.xml" value="0.23802083333333332" />

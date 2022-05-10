@@ -1,5 +1,6 @@
 package com.example.myapplication.checkin_guest.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +9,22 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.myapplication.checkin_guest.R;
 import com.example.myapplication.checkin_guest.model.RecommendationItem;
+import com.example.myapplication.checkin_guest.util.Util;
 
 import java.util.ArrayList;
 
 public class RecyclerViewAdapterRecommendation extends RecyclerView.Adapter<RecyclerViewAdapterRecommendation.ViewHolder> {
 
-    ArrayList<RecommendationItem> listData;
+    private ArrayList<RecommendationItem> listData;
+    private Context mContext;
+
+    public RecyclerViewAdapterRecommendation(Context context){
+        this.mContext = context;
+    }
 
     public void setListData(ArrayList<RecommendationItem> listData) {
         this.listData = listData;
@@ -30,6 +39,12 @@ public class RecyclerViewAdapterRecommendation extends RecyclerView.Adapter<Recy
         }
 
         public void onBind(RecommendationItem recommendationItem){
+//            Glide.with(mContext)
+//                    .load(re.getImg_url())
+//                    .skipMemoryCache(true)
+//                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                    .addListener(Util.imageLoadingListener(lottieAnimationView))
+//                    .into(imageView);
             imageView.setImageBitmap(recommendationItem.getBitmap());
         }
     }

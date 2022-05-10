@@ -19,6 +19,7 @@ import com.example.myapplication.checkin_guest.view.fragment.mainWindow.FragChat
 import com.example.myapplication.checkin_guest.view.fragment.mainWindow.FragFavorite;
 import com.example.myapplication.checkin_guest.view.fragment.mainWindow.FragMyInfo;
 import com.example.myapplication.checkin_guest.view.fragment.mainWindow.FragSearch;
+import com.example.myapplication.checkin_guest.viewModel.Executor.SendNotification;
 import com.example.myapplication.checkin_guest.viewModel.MainViewModel;
 import com.orhanobut.logger.Logger;
 
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.setGetPushTokenListener();
 
         mainViewModel.getFirebaseToken();
-
+        SendNotification.sendNotification("d6XB1GJtRCKwmvXlRrthbj:APA91bEnxYciZTt4LBoI5uRI-CtBSpEJHTeFr_4h0biHkms6y7lBHpNEcUmqvuDMtaxpQqk0_aQWLPq1s5pzqzPvfgli7UYOkCA0MBm__JcTUJ3rXq2xbwOHAUC7jjyQOmuiTbxaOuaX", "test", "test");
         mainViewModel.getIsSetUserInfo().observe(this, data->{
             Log.d(TAG, "observe");
             boolean isSetUserInfo = mainViewModel.getIsSetUserInfo().getValue();
@@ -72,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
         searchScreenSetting();
         activityMainBinding.bottomNavigationView.setOnItemSelectedListener(item -> {
