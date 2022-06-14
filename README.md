@@ -30,5 +30,6 @@ repository 입니다.
            도어락과 nfc를 이용한 통신 기능 개발 수행  
            앱 UI xml 코드 작성  
            Firebase 서버 연동
-* 윤현웅 : 디자인
-* 고예림 : 디자인
+* 윤현웅 : After Effect와 Lottie를 사용하여 디자인 시각화 작업 수행  
+* 고예림 : figma로 전체디자인  
+           게스트앱 도움말,계정관리,알림 화면 xml파일 작성
